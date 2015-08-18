@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/_template.xhtml">
+	<ui:define name="title">
+	    Cadastro de Categoria
+	</ui:define>
+	<ui:define name="content">
+		<h1>Cadastro de Categoria</h1>
+		<h:messages styleClass="alert alert-info" />
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Tipo" for="tipo" />
+				<h:inputText id="tipo" styleClass="form-control"
+					value="#{cadastroCategoriaBean.categoria.tipo}" />
+
+				<h:outputLabel value="Descrição" for="descricao" />
+				<h:inputTextarea id="descricao" styleClass="form-control"
+					value="#{cadastroCategoriaBean.categoria.descricao}" />
+
+				<h:outputLabel value="Tipo de Unidade" for="unidade" />
+				<h:inputText id="unidade" styleClass="form-control"
+					value="#{cadastroCategoriaBean.categoria.unidade}" />
+
+
+			</h:panelGrid>
+			<h:commandButton value="Salvar" styleClass="btn btn-primary"
+				actionListener="#{cadastroCategoriaBean.cadastrar}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+
+
+

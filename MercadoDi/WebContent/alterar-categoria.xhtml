@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/_template.xhtml">
+	<ui:define name="title">
+	    Alterar Categoria
+	</ui:define>
+	<ui:define name="content">
+		<h1>Alterar Categoria</h1>
+		<h:messages styleClass="alert alert-info" />
+		<h:form>
+		<h:inputHidden value="#{alterarCategoriaBean.categoria.cdCategoria}"/>
+		   <h:panelGrid>
+			<h:outputLabel value="Tipo" for="tipo" />
+			<h:inputText id="tipo" styleClass="form-control"
+				value="#{alterarCategoriaBean.categoria.tipo}" />
+
+			<h:outputLabel value="Descrição" for="descricao" />
+			<h:inputTextarea id="descricao" styleClass="form-control"
+				value="#{alterarCategoriaBean.categoria.descricao}" />
+
+			<h:outputLabel value="Tipo de Unidade" for="unidade" />
+			<h:inputText id="unidade" styleClass="form-control"
+				value="#{alterarCategoriaBean.categoria.unidade}" />
+
+
+			</h:panelGrid>
+			<h:commandButton value="Alterar" styleClass="btn btn-primary"
+				actionListener="#{alterarCategoriaBean.alterar}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+
+
+

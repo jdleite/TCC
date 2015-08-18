@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/_template.xhtml">
+	<ui:define name="title">
+	    Cadastro de Fornecedor
+	</ui:define>
+	<ui:define name="content">
+		<h1>Cadastro de Fornecedor</h1>
+		<h:messages styleClass="alert alert-info" />
+		<h:form>
+			<h:panelGrid columns="6">
+				<h:outputLabel value="Nome" for="nome" />
+				<h:inputText id="nome" styleClass="form-control"
+					value="#{cadastroFornecedorBean.fornecedor.nome}" />
+
+				<h:outputLabel value="Endereço" for="endereco" />
+				<h:inputText id="endereco" styleClass="form-control"
+					value="#{cadastroFornecedorBean.fornecedor.endereco}" />
+
+				<h:outputLabel value="Telefone" for="telefone" />
+				<h:inputText id="telefone" styleClass="form-control"
+					value="#{cadastroFornecedorBean.fornecedor.telefone}" />
+
+				<h:outputLabel value="Cep" for="cep" />
+				<h:inputText id="cep" styleClass="form-control"
+					value="#{cadastroFornecedorBean.fornecedor.cep}" />
+
+				<h:outputLabel value="Numero" for="numero" />
+				<h:inputText id="numero" styleClass="form-control"
+					value="#{cadastroFornecedorBean.fornecedor.numero}" />
+
+				<h:outputLabel value="Bairro" for="bairro" />
+				<h:inputText id="bairro" styleClass="form-control"
+					value="#{cadastroFornecedorBean.fornecedor.bairro}" />
+			</h:panelGrid>
+
+			<h:commandButton value="Salvar" styleClass="btn btn-primary"
+				actionListener="#{cadastroFornecedorBean.cadastrar}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+
+
+
