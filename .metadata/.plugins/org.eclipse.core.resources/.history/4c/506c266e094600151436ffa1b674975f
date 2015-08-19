@@ -31,11 +31,11 @@
 	   			#{f.cep}
 	   		</h:column>
 	   		<h:column>
-	   			<f:facet name="header">Numero do cliente</f:facet>
+	   			<f:facet name="header">Numero</f:facet>
 	   			#{f.numero}
 	   		</h:column>
 			<h:column>
-				<f:facet name="header">Bairro do cliente</f:facet>
+				<f:facet name="header">Bairro</f:facet>
 	   			#{f.bairro}
 	   		</h:column>
 	   		<h:column>
