@@ -15,19 +15,17 @@
 		<h1>Cadastro de Produto</h1>
 		<h:messages styleClass="alert alert-info" />
 		<h:form>
-
-			<h:inputText
-				value="#{cadastroCategoriaBean.categoria.cdCategoria}" />
+		 
 			<h:panelGrid columns="6">
 
 				<h:outputLabel value="Categoria" for="categoria" />
 				<h:inputText id="categoria" styleClass="form-control"
-					value="#{cadastroProdutoBean.produto.categoria}" />
-				<h:commandButton value="Selecionar" action="lista-nome-categoria" />
+					value="#{cadastroProdutoBean.cdCategoria}" />
+				 <h:commandButton value="Selecionar" action="lista-nome-categoria" />
 
 				<h:outputLabel value="Fornecedor" for="fornecedor" />
 				<h:inputText id="fornecedor" styleClass="form-control"
-					value="#{cadastroProdutoBean.produto.fornecedor}" />
+					value="#{cadastroProdutoBean.cdFornecedor}" />
 
 				<h:commandButton value="Selecionar" action="lista-nome-fornecedor" />
 

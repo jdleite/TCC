@@ -1,9 +1,7 @@
 package br.com.mercado.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,10 +17,10 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProduto")
 	@Column(name = "CD_PRODUTO")
 	private int cdProduto;
-	@ManyToOne(cascade=CascadeType.PERSIST,fetch=FetchType.LAZY)
+	@ManyToOne
 	private Categoria categoria;
-	@Column(name = "CD_FORNECEDOR", length = 10, nullable = true)
-	private int fornecedor;
+	@ManyToOne
+	private Fornecedor fornecedor;
 	@Column(name = "CD_BARRA", length = 10, nullable = true)
 	private int cdBarra;
 	@Column(name = "NM_PRODUTO", length = 50, nullable = true)
@@ -88,14 +86,15 @@ public class Produto {
 		this.peso = peso;
 	}
 
-	public int getFornecedor() {
+	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}
 
-	public void setFornecedor(int fornecedor) {
+	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}
 
+	
 	
 
 }

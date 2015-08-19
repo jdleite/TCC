@@ -25,8 +25,8 @@
 	   		</h:column>
 				<h:column>
 					<h:commandButton value="Selecionar" action="cadastro-produto">
-						<f:setPropertyActionListener value="#{f}"
-							target="#{cadastroProdutoBean.produto}" />
+						<f:setPropertyActionListener value="#{f.cdFornecedor}"
+							target="#{cadastroProdutoBean.cdFornecedor}" />
 					</h:commandButton>
 				</h:column>
 			</h:dataTable>
