@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/_template.xhtml">
+	<ui:define name="content">
+		<h1>Listar Categoria</h1>
+		<h:messages styleClass="alert alert-info" />
+		<h:form>
+			<h:dataTable value="#{listaCategoriaBean.lista}" var="c"
+				styleClass="table">
+				<h:column>
+					<f:facet name="header">Tipo</f:facet>
+	   			#{c.tipo}
+	   		</h:column>
+				<h:column>
+					<f:facet name="header">Descrição</f:facet>
+	   			#{c.descricao}
+	   		</h:column>
+
+				<h:column>
+					<h:commandButton value="Excluir"
+						action="#{excluirCategoriaBean.excluir}" update="tabela">
+						<f:setPropertyActionListener value="#{c}"
+							target="#{excluirCategoriaBean.categoria}" />
+					</h:commandButton>
+					<h:commandButton value="Alterar" action="alterar-categoria">
+						<f:setPropertyActionListener value="#{c}"
+							target="#{alterarCategoriaBean.categoria}" />
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+
+
