@@ -1,14 +1,11 @@
 package br.com.mercado.view;
 
-import javax.persistence.EntityManager;
+import java.util.List;
 
-import br.com.mercado.dao.CategoriaDAO;
-import br.com.mercado.dao.ProdutoDAO;
-import br.com.mercado.daoImpl.CategoriaDAOImpl;
-import br.com.mercado.daoImpl.ProdutoDAOImpl;
-import br.com.mercado.entity.Categoria;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import br.com.mercado.entity.Produto;
-import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.singleton.EMFactorySingleton;
 
 public class Teste {
@@ -16,6 +13,13 @@ public class Teste {
 		EntityManager em = EMFactorySingleton.getInstance()
 				.createEntityManager();
 
+		Query query = em.createQuery("select p from Produto p",Produto.class);
+
+		
+		List<Produto> produtos =  query.getResultList();
+		for (Produto produto : produtos) {
+		System.out.println(produto.getCategoria().getDescricao());
+		}
 
 	}
 }

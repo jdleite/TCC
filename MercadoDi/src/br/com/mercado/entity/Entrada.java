@@ -1,5 +1,6 @@
 package br.com.mercado.entity;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import javax.persistence.TemporalType;
 @Entity
 @SequenceGenerator(name = "seqEntrada", sequenceName = "SEQ_ENTRADA_PROD", allocationSize = 1)
 @Table(name = "TB_DI_ENTRADA_PRODUTO")
-public class Entrada {
+public class Entrada implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEntrada")
 	@Column(name = "CD_ENTRADA")

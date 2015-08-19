@@ -1,0 +1,24 @@
+package br.com.mercado.view;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.com.mercado.singleton.EMFactorySingleton;
+
+public class Teste {
+	public static void main(String[] args) {
+		EntityManager em = EMFactorySingleton.getInstance()
+				.createEntityManager();
+
+		Query query = em.createQuery("SELECT p FROM Teacher t JOIN t.phones p WHERE t.firstName = :firstName");
+
+		query.setParameter("firstName", "Pranil");
+		List<Phone> phones = (List<Phone>) query.getResultList();
+		for (Phone phone : phones) {
+		System.out.println(phone.getNumber());
+		}
+
+	}
+}

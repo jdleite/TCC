@@ -1,2 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+<fullyQualifiedTypeName name="br.com.mercado.entity.Fornecedor"/>
+<fullyQualifiedTypeName name="br.com.mercado.bean.EntradaBean"/>
+<fullyQualifiedTypeName name="br.com.mercado.dao.ProdutoDAO"/>
+<fullyQualifiedTypeName name="br.com.mercado.daoImpl.ProdutoDAOImpl"/>
+<fullyQualifiedTypeName name="br.com.mercado.entity.Produto"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ViewScoped"/>
+<fullyQualifiedTypeName name="br.com.mercado.dao.EntradaDao"/>
+<fullyQualifiedTypeName name="br.com.mercado.singleton.EMFactorySingleton"/>
+<fullyQualifiedTypeName name="br.com.mercado.daoImpl.EntradaDAOImpl"/>
+<fullyQualifiedTypeName name="br.com.mercado.entity.Entrada"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+<fullyQualifiedTypeName name="javax.enterprise.context.RequestScoped"/>
+<fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
+<fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
+<fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
+<fullyQualifiedTypeName name="javax.faces.bean.RequestScoped"/>
+</qualifiedTypeNameHistroy>

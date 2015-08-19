@@ -1,0 +1,10 @@
+package br.com.mercado.bean;
+
+import java.util.List;
+
+import br.com.mercado.entity.Entrada;
+
+public class ListaEntrada {
+	private List<Entrada> lista;
+	
+}

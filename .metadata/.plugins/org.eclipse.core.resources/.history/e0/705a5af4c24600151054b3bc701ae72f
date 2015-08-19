@@ -1,0 +1,26 @@
+package br.com.mercado.view;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
+import br.com.mercado.entity.Categoria;
+import br.com.mercado.entity.Produto;
+import br.com.mercado.singleton.EMFactorySingleton;
+
+public class Teste {
+	public static void main(String[] args) {
+		EntityManager em = EMFactorySingleton.getInstance()
+				.createEntityManager();
+
+		TypedQuery<Categoria> query = 
+				em.createQuery("select c from Categoria c",Categoria.class);
+		
+		List<Produto> produto = query;
+		for (Produto produto : produtos) {
+		System.out.println(produto.getNmProduto());
+		}
+
+	}
+}

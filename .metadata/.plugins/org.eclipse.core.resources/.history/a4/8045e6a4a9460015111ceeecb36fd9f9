@@ -1,0 +1,36 @@
+package br.com.mercado.bean;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.entity.Entrada;
+
+@ManagedBean
+@RequestScoped
+public class CadastroEntradaBean {
+
+	private Entrada entrada;
+	private EntradaDao dao;
+	
+	@PostConstruct
+	public void init(){
+		
+	}
+	
+	
+	
+	
+	
+	
+	public Entrada getEntrada() {
+		return entrada;
+	}
+	public void setEntrada(Entrada entrada) {
+		this.entrada = entrada;
+	}
+	
+	
+	
+}

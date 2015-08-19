@@ -1,0 +1,13 @@
+package br.com.mercado.bean;
+
+import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.entity.Entrada;
+
+public class AlterarEntrada {
+	private Entrada entrada;
+	private EntradaDao dao;
+	
+	
+	
+
+}

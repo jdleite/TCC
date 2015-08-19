@@ -1,0 +1,69 @@
+package br.com.mercado.bean;
+
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+
+import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.dao.ProdutoDAO;
+import br.com.mercado.daoImpl.EntradaDAOImpl;
+import br.com.mercado.entity.Entrada;
+import br.com.mercado.exception.DBCommitException;
+import br.com.mercado.singleton.EMFactorySingleton;
+
+@ManagedBean
+@RequestScoped
+public class CadastroEntradaBean {
+
+	private Entrada entrada;
+	private EntradaDao dao;
+	private int cdProduto;
+	private ProdutoDAO daoProd;
+	
+	@PostConstruct
+	public void init(){
+		dao = new EntradaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+		daoProd = new EntradaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+		entrada = new Entrada();
+	}
+	
+	public void cadastrar(){
+		FacesMessage msg;
+		try {
+			
+			dao.insert(entrada);
+			msg = new FacesMessage("Cadastrado com Sucesso!");
+		} catch (DBCommitException e) {
+			e.printStackTrace();
+
+			msg = new FacesMessage("Cadastrado com Sucesso!");
+		}
+		
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
+	
+	
+	
+	
+	
+	public Entrada getEntrada() {
+		return entrada;
+	}
+	public void setEntrada(Entrada entrada) {
+		this.entrada = entrada;
+	}
+
+	public int getCdProduto() {
+		return cdProduto;
+	}
+
+	public void setCdProduto(int cdProduto) {
+		this.cdProduto = cdProduto;
+	}
+	
+	
+	
+}

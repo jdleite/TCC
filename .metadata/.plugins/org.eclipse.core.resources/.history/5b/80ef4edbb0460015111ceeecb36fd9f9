@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/_template.xhtml">
+	<ui:define name="content">
+		<h1>Lista de Entrada de Produtos</h1>
+		<h:messages styleClass="alert alert-info" />
+		<h:form>
+			<h:dataTable value="#{listaEntrada.lista}" var="e" styleClass="table">
+				<h:column>
+					<f:facet name="header">Preço da Compra</f:facet>
+	   			#{e.precoCompra}
+	   		</h:column>
+				<h:column>
+					<f:facet name="header">Quantidade</f:facet>
+	   			#{e.qtCompra}
+	   		</h:column>
+				<h:column>
+					<f:facet name="header">Validade</f:facet>
+					<h:outputText value="#{e.dtValidade.time}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Compra</f:facet>
+					<h:outputText value="#{e.dtCompra.time}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<h:commandButton value="Excluir"
+						action="#{excluirEntradaBean.excluir}" update="tabela">
+						<f:setPropertyActionListener value="#{e}"
+							target="#{excluirEntradaBean.entrada}" />
+					</h:commandButton>
+					<h:commandButton value="Alterar" action="alterar-entrada">
+						<f:setPropertyActionListener value="#{e.cdEntrada}"
+							target="#{alterarEntradaBean.entrada.cdEntrada}" />
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+
+

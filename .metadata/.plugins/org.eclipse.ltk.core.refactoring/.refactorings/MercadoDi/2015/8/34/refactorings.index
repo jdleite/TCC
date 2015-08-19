@@ -1,1 +1,13 @@
 1439940519009	Delete elements
+1440011084633	Delete element
+1440011932190	Encapsulate field 'fornecedor'
+1440012613787	Encapsulate field 'fornecedor'
+1440012881749	Encapsulate field 'entrada'
+1440013345361	Encapsulate field 'cdProduto'
+1440013534606	Encapsulate field 'produto'
+1440014079381	Encapsulate field 'lista'
+1440014172019	Encapsulate field 'entrada'
+1440014386341	Encapsulate field 'entrada'
+1440014851111	Rename type 'AlterarEntrada'
+1440020167735	Rename type 'ListaEntrada'
+1440022619713	Encapsulate field 'entrada'

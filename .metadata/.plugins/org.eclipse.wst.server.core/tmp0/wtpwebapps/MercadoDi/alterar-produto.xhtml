@@ -15,41 +15,26 @@
 		<h1>Alterar Categoria</h1>
 		<h:messages styleClass="alert alert-info" />
 		<h:form>
+	     <h:inputHidden value="#{alterarProdutoBean.produto.cdProduto}" />
 			<h:panelGrid columns="2">
-			
-			<h:inputHidden value="Codigo do Produto" for="codigo" />
-				<h:inputText id="codigo" styleClass="form-control"
-					value="#{cadastroProdutoBean.produto.cdProduto}" />
-					
-					
-					
-				<h:outputLabel value="Categoria" for="categoria" />
-				<h:inputText id="categoria" styleClass="form-control"
-					value="#{cadastroCategoriaBean.categoria.cdCategoria}" />
-				<h:commandButton value="Selecionar" action="lista-nome-categoria"  />
-
-
-				<h:outputLabel value="Fornecedor" for="fornecedor" />
-				<h:inputText id="fornecedor" styleClass="form-control"
-					value="#{cadastroProdutoBean.produto.fornecedor}" />
 
 
 				<h:outputLabel value="Codigo de Barra" for="barra" />
 				<h:inputText id="barra" styleClass="form-control"
-					value="#{cadastroProdutoBean.produto.cdBarra}" />
+					value="#{alterarProdutoBean.produto.cdBarra}" />
 
 				<h:outputLabel value="Nome do Produto" for="Nome" />
 				<h:inputText id="nome" styleClass="form-control"
-					value="#{cadastroProdutoBean.produto.nmProduto}" />
+					value="#{alterarProdutoBean.produto.nmProduto}" />
 
 
 				<h:outputLabel value="Peso" for="peso" />
 				<h:inputText id="peso" styleClass="form-control"
-					value="#{cadastroProdutoBean.produto.peso}" />
+					value="#{alterarProdutoBean.produto.peso}" />
 
 				<h:outputLabel value="Descrição" for="descricao" />
 				<h:inputTextarea id="descricao" styleClass="form-control"
-					value="#{cadastroProdutoBean.produto.descricao}" />
+					value="#{alterarProdutoBean.produto.descricao}" />
 			</h:panelGrid>
 			<h:commandButton value="Alterar" styleClass="btn btn-primary"
 					actionListener="#{alterarProdutoBean.alterar}" />

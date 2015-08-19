@@ -19,7 +19,7 @@
 			<h:panelGrid columns="7">
 				<h:outputLabel value="Produto" for="codigo" />
 				<h:inputText id="codigo" styleClass="form-control"
-					value="#{cadastroProdutoBean.produto.cdProduto}" />
+					value="#{cadastroEntradaBean.cdProduto}" />
 				<h:commandButton value="Selecionar" action="lista-nome-produto"/>
 				
 
@@ -48,7 +48,7 @@
 				</h:inputText>
 			</h:panelGrid>
 			<h:commandButton value="Salvar" styleClass="btn btn-primary"
-				actionListener="#{cadastroEntradaBean.cadastrarEntrada}" />
+				actionListener="#{cadastroEntradaBean.cadastrar}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

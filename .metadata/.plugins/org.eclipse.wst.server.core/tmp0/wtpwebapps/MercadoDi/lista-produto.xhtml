@@ -15,16 +15,12 @@
 			<h:dataTable value="#{listaProdutoBean.lista}" var="p"
 				styleClass="table">
 				<h:column>
-					<f:facet name="header">Código</f:facet>
-	   			#{p.cdProduto}
+					<f:facet name="header">Nome do Produto</f:facet>
+	   			#{p.nmProduto}
 	   		</h:column>
 				<h:column>
 					<f:facet name="header">Codigo de Barra</f:facet>
 	   			#{p.cdBarra}
-	   		</h:column>
-				<h:column>
-					<f:facet name="header">Nome do Produto</f:facet>
-	   			#{p.nmProduto}
 	   		</h:column>
 				<h:column>
 					<f:facet name="header">Peso</f:facet>
@@ -35,6 +31,14 @@
 	   			#{p.descricao}
 	   		</h:column>
 				<h:column>
+					<f:facet name="header">Tipo de Unidade</f:facet>
+	   			#{p.categoria.unidade}
+	   		</h:column>
+				<h:column>
+					<f:facet name="header">Tipo da Categoria</f:facet>
+	   			#{p.categoria.tipo}
+	   		</h:column>
+				<h:column>
 					<h:commandButton value="Excluir"
 						action="#{excluirProdutoBean.excluir}" update="tabela">
 						<f:setPropertyActionListener value="#{p}"
@@ -42,7 +46,7 @@
 					</h:commandButton>
 					<h:commandButton value="Alterar" action="alterar-produto">
 						<f:setPropertyActionListener value="#{p}"
-							target="#{cadastroProdutoBean.produto}" />
+							target="#{alterarProdutoBean.produto}" />
 					</h:commandButton>
 				</h:column>
 			</h:dataTable>

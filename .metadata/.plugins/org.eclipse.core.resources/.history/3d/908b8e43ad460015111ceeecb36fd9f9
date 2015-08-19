@@ -1,0 +1,51 @@
+package br.com.mercado.bean;
+
+import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+
+import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.daoImpl.EntradaDAOImpl;
+import br.com.mercado.entity.Entrada;
+import br.com.mercado.exception.DBCommitException;
+import br.com.mercado.singleton.EMFactorySingleton;
+
+
+@ManagedBean
+@RequestScoped
+public class AlterarEntrada {
+	private Entrada entrada;
+	private EntradaDao dao;
+	
+	
+	public void init(){
+		dao =  new EntradaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+		
+		entrada = new Entrada();
+	}
+	
+	
+	
+	public void alterar(){
+		FacesMessage msg;
+		try {
+			dao.update(entrada);
+			msg = new FacesMEssage("Alterado com Sucesso!");
+		} catch (DBCommitException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public Entrada getEntrada() {
+		return entrada;
+	}
+	public void setEntrada(Entrada entrada) {
+		this.entrada = entrada;
+	}
+	
+	
+	
+
+}

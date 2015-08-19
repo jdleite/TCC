@@ -1,5 +1,6 @@
 package br.com.mercado.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -93,6 +94,10 @@ public class Produto {
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}
+
+
+
+	
 
 	
 	

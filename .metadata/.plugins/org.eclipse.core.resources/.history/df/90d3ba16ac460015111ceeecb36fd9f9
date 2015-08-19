@@ -1,0 +1,8 @@
+package br.com.mercado.bean;
+
+import java.util.List;
+
+public class ListaEntrada {
+	private List<Etrada> lista;
+	
+}

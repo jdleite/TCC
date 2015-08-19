@@ -1,0 +1,58 @@
+package br.com.mercado.bean;
+
+import java.util.Calendar;
+
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+
+import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.daoImpl.EntradaDAOImpl;
+import br.com.mercado.entity.Entrada;
+import br.com.mercado.exception.DBCommitException;
+import br.com.mercado.singleton.EMFactorySingleton;
+
+@ManagedBean
+@RequestScoped
+public class AlterarEntradaBean {
+	private Entrada entrada;
+	private EntradaDao dao;
+	
+	@PostConstruct
+	private void init(){
+		dao =  new EntradaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+		
+		entrada = new Entrada();
+	}
+	
+	
+	
+	public void alterar(){
+		FacesMessage msg;
+		try {
+			
+			dao.update(entrada);
+			msg = new FacesMessage("Atualizado com Sucesso!");
+		} catch (DBCommitException e) {
+			e.printStackTrace();
+			msg = new FacesMessage("Erro ao Atualizar");
+			
+		}
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		
+	}
+	
+	
+	public Entrada getEntrada() {
+		return entrada;
+	}
+	public void setEntrada(Entrada entrada) {
+		this.entrada = entrada;
+	}
+	
+	
+	
+
+}

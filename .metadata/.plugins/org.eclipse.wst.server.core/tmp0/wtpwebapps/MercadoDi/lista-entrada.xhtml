@@ -12,7 +12,7 @@
 		<h1>Lista de Entrada de Produtos</h1>
 		<h:messages styleClass="alert alert-info" />
 		<h:form>
-			<h:dataTable value="#{listaEntrada.lista}" var="e" styleClass="table">
+			<h:dataTable value="#{listaEntradaBean.lista}" var="e" styleClass="table">
 				<h:column>
 					<f:facet name="header">Preço da Compra</f:facet>
 	   			#{e.precoCompra}
@@ -41,7 +41,7 @@
 					</h:commandButton>
 					<h:commandButton value="Alterar" action="alterar-entrada">
 						<f:setPropertyActionListener value="#{e}"
-							target="#{cadastroEntradaBean.entrada}" />
+							target="#{alterarEntradaBean.entrada}" />
 					</h:commandButton>
 				</h:column>
 
