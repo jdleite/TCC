@@ -7,12 +7,15 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.mercado.dao.CategoriaDAO;
+import br.com.mercado.dao.EstoqueDAO;
 import br.com.mercado.dao.FornecedorDAO;
 import br.com.mercado.dao.ProdutoDAO;
 import br.com.mercado.daoImpl.CategoriaDAOImpl;
+import br.com.mercado.daoImpl.EstoqueDAOImpl;
 import br.com.mercado.daoImpl.FornecedorDAOImpl;
 import br.com.mercado.daoImpl.ProdutoDAOImpl;
 import br.com.mercado.entity.Categoria;
+import br.com.mercado.entity.Estoque;
 import br.com.mercado.entity.Fornecedor;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.exception.DBCommitException;
@@ -30,26 +33,31 @@ public class CadastroProdutoBean {
 	private CategoriaDAO daoCat;
 	private int cdCategoria;
 	private int cdFornecedor;
+	private Estoque estoque;
+	private EstoqueDAO eDao;
 
 	@PostConstruct
 	private void init(){
 		dao = new ProdutoDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
 		daoCat = new CategoriaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
 		daoFor = new FornecedorDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+		eDao = new EstoqueDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
 		categoria = new Categoria();
 		produto = new Produto();
-		
+		estoque = new Estoque();
 	}
 	
 	
 	public void cadastrar(){
 		FacesMessage msg;
 		try {
+            estoque.setProduto(produto);
 			categoria = daoCat.findById(cdCategoria);
 			fornecedor = daoFor.findById(cdFornecedor);
 			produto.setFornecedor(fornecedor);
 			produto.setCategoria(categoria);
-			dao.insert(produto);
+			dao.insert(produto);		
+			eDao.insert(estoque);
 			msg  = new FacesMessage("Cadastrado com Sucesso!");
 		} catch (DBCommitException e) {			
 			e.printStackTrace();
@@ -108,6 +116,19 @@ public class CadastroProdutoBean {
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}
+
+
+	public Estoque getEstoque() {
+		return estoque;
+	}
+
+
+	public void setEstoque(Estoque estoque) {
+		this.estoque = estoque;
+	}
+
+
+	
 	
 	
 

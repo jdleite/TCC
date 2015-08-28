@@ -5,10 +5,12 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.mercado.dao.EstoqueDAO;
 import br.com.mercado.dao.ProdutoDAO;
+import br.com.mercado.daoImpl.EstoqueDAOImpl;
 import br.com.mercado.daoImpl.ProdutoDAOImpl;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.exception.DBCommitException;
@@ -16,23 +18,34 @@ import br.com.mercado.exception.IdNotFoundException;
 import br.com.mercado.singleton.EMFactorySingleton;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ExcluirProdutoBean {
 	
 	private Produto produto;
 	private List<Produto> lista;
 	private ProdutoDAO dao;
+	private EstoqueDAO eDao;
+
+
 	
+	
+
 	@PostConstruct
 	public void init(){
 		dao = new ProdutoDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+		eDao = new EstoqueDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
 		lista = dao.listarProduto();
+		
+		
+		
 	}
 	
 	public void excluir(){
 		FacesMessage msg = null;
 		try {
 			dao.delete(produto.getCdProduto());
+			eDao.deletar(produto.getCdProduto());
+			
 			lista.remove(produto);
 			msg = new FacesMessage("Excluido com Sucesso!");
 		} catch (DBCommitException e) {
@@ -64,5 +77,7 @@ public class ExcluirProdutoBean {
 	public void setLista(List<Produto> lista) {
 		this.lista = lista;
 	}
+
+	
 
 }

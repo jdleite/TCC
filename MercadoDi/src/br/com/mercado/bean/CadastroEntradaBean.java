@@ -9,10 +9,13 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.dao.EstoqueDAO;
 import br.com.mercado.dao.ProdutoDAO;
 import br.com.mercado.daoImpl.EntradaDAOImpl;
+import br.com.mercado.daoImpl.EstoqueDAOImpl;
 import br.com.mercado.daoImpl.ProdutoDAOImpl;
 import br.com.mercado.entity.Entrada;
+import br.com.mercado.entity.Estoque;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.singleton.EMFactorySingleton;
@@ -26,14 +29,23 @@ public class CadastroEntradaBean {
 	private int cdProduto;
 	private ProdutoDAO daoProd;
 	private Produto produto;
+	private Estoque estoque;
+	private EstoqueDAO eDao;
+	private int id;
+	private int quantidade;
 	
+	
+
 	@PostConstruct
 	public void init(){
 		dao = new EntradaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
 		daoProd = new ProdutoDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+		eDao = new EstoqueDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
 		entrada = new Entrada();
+		estoque = new Estoque();
 		entrada.setDtCompra(Calendar.getInstance());
 		entrada.setDtValidade(Calendar.getInstance());
+		
 	}
 	
 	public void cadastrar(){
@@ -42,6 +54,7 @@ public class CadastroEntradaBean {
 			setProduto(daoProd.findById(cdProduto));
 			entrada.setProduto(getProduto());
 			dao.insert(entrada);
+			eDao.somar(cdProduto, entrada.getQtCompra());
 			msg = new FacesMessage("Cadastrado com Sucesso!");
 		} catch (DBCommitException e) {
 			e.printStackTrace();
@@ -54,7 +67,29 @@ public class CadastroEntradaBean {
 	
 	
 	
-	
+	public Estoque getEstoque() {
+		return estoque;
+	}
+
+	public void setEstoque(Estoque estoque) {
+		this.estoque = estoque;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 	
 	
 	public Entrada getEntrada() {

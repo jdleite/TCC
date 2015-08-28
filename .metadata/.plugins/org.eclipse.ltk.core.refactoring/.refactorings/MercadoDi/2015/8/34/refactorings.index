@@ -11,3 +11,8 @@
 1440014851111	Rename type 'AlterarEntrada'
 1440020167735	Rename type 'ListaEntrada'
 1440022619713	Encapsulate field 'entrada'
+1440266630861	Delete element
+1440266853038	Delete elements
+1440266921813	Delete element
+1440268095655	Delete element
+1440269034842	Rename type 'CadastroProdutoBean'

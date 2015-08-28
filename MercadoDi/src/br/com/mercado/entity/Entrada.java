@@ -87,4 +87,6 @@ public class Entrada implements Serializable {
 		this.produto = produto;
 	}
 
+
+
 }

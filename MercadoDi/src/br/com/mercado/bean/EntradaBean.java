@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 
 import br.com.mercado.daoImpl.EntradaDAOImpl;
 import br.com.mercado.entity.Entrada;
+import br.com.mercado.entity.Estoque;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.singleton.EMFactorySingleton;
 
@@ -18,8 +19,11 @@ public class EntradaBean {
 
 	private EntradaDAOImpl dao;
 	private Entrada entrada;
+	private Estoque estoque;
+	private int id;
+	private int quantidade;
 	
-	//Método de inicialização do ManagedBean
+	
 	@PostConstruct
 	private void init(){
 		EntityManager em = EMFactorySingleton
@@ -28,7 +32,7 @@ public class EntradaBean {
 		entrada = new Entrada();
 	}
 	
-	//Método para o clique do botão
+	
 	public void cadastrar(){
 		FacesMessage msg;
 		try {

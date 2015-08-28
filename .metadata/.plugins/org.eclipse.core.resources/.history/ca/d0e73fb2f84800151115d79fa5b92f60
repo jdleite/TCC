@@ -1,0 +1,7 @@
+package br.com.mercado.dao;
+
+import br.com.mercado.entity.Estoque;
+
+public interface  EstoqueDAO extends DAO<Estoque,Integer>{
+
+}

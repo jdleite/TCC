@@ -3,7 +3,7 @@ package br.com.mercado.bean;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.mercado.dao.EntradaDao;
@@ -13,7 +13,7 @@ import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.exception.IdNotFoundException;
 import br.com.mercado.singleton.EMFactorySingleton;
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ExcluirEntradaBean {
 	private Entrada entrada;
 	private EntradaDao dao;
