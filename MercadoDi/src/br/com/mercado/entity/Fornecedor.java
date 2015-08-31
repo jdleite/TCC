@@ -1,5 +1,7 @@
 package br.com.mercado.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,8 @@ import javax.persistence.Table;
 @Entity
 @SequenceGenerator(name="seqFornecedor",sequenceName="SEQ_FORNECEDOR",allocationSize=1)
 @Table(name="TB_DI_FORNECEDOR")
-public class Fornecedor {
+public class Fornecedor implements Serializable{	
+	private static final long serialVersionUID = 8546752062468631005L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,
 	generator="seqFornecedor")

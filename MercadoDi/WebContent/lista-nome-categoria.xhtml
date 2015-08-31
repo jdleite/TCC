@@ -10,32 +10,33 @@
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="content">
 		<h1>Categorias</h1>
-		<h:messages styleClass="alert alert-info" />
+		<p:messages autoUpdate="true" />
+		<p:growl autoUpdate="true" />
 		<h:form>
-		<h:dataTable value="#{listaCategoriaBean.lista}" var="c"
-			styleClass="table">
-			<h:column>
-				<f:facet name="header">Código</f:facet>
+			<h:dataTable value="#{listaCategoriaBean.lista}" var="c"
+				styleClass="table">
+				<h:column>
+					<f:facet name="header">Código</f:facet>
 	   			#{c.cdCategoria}
 	   		</h:column>
-			<h:column>
-				<f:facet name="header">Tipo</f:facet>
+				<h:column>
+					<f:facet name="header">Tipo</f:facet>
 	   			#{c.tipo}
 	   		</h:column>
-			<h:column>
-				<f:facet name="header">Descrição</f:facet>
+				<h:column>
+					<f:facet name="header">Descrição</f:facet>
 	   			#{c.descricao}
 	   		</h:column>
-					    		
-		    	<h:column>
+
+				<h:column>
 					<h:commandButton value="Selecionar" action="cadastro-produto">
-						<f:setPropertyActionListener value="#{c.cdCategoria}" 
-							target="#{cadastroProdutoBean.cdCategoria}"/>
+						<f:setPropertyActionListener value="#{c.cdCategoria}"
+							target="#{cadastroProdutoBean.cdCategoria}" />
 					</h:commandButton>
 				</h:column>
-	   		 
 
-		</h:dataTable>
+
+			</h:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

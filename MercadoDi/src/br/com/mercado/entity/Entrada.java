@@ -2,13 +2,18 @@ package br.com.mercado.entity;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -17,15 +22,19 @@ import javax.persistence.TemporalType;
 @Entity
 @SequenceGenerator(name = "seqEntrada", sequenceName = "SEQ_ENTRADA_PROD", allocationSize = 1)
 @Table(name = "TB_DI_ENTRADA_PRODUTO")
-public class Entrada implements Serializable {
+public class Entrada implements Serializable {	
+	private static final long serialVersionUID = 7447480587752748366L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEntrada")
 	@Column(name = "CD_ENTRADA")
 	private int cdEntrada;
-	@ManyToOne
+	@OneToOne
+	@JoinColumn(name = "CD_Produto")
 	private Produto produto;
 	@Column(name = "PRECO_COMPRA", length = 10, nullable = true)
 	private double precoCompra;
+	@Column(name = "PRECO_VENDA", length = 10, nullable = true)
+	private double precoVenda;
 	@Column(name = "QT_COMPRA", nullable = true)
 	private int qtCompra;
 	@Temporal(TemporalType.DATE)
@@ -38,6 +47,11 @@ public class Entrada implements Serializable {
 	public Entrada() {
 
 	}
+
+	
+
+
+
 
 	public int getCdEntrada() {
 		return cdEntrada;
@@ -79,13 +93,42 @@ public class Entrada implements Serializable {
 		this.dtCompra = dtCompra;
 	}
 
+
+
+
+
+
 	public Produto getProduto() {
 		return produto;
 	}
 
+
+
+
+
+
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
+
+
+
+
+
+
+	public double getPrecoVenda() {
+		return precoVenda;
+	}
+
+
+
+
+
+
+	public void setPrecoVenda(double precoVenda) {
+		this.precoVenda = precoVenda;
+	}
+
 
 
 

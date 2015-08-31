@@ -9,15 +9,17 @@
 
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="title">
-	    Alterar Categoria
+	    Alterar Produto
 	</ui:define>
 	<ui:define name="content">
 		<h1>Alterar Categoria</h1>
 		<h:messages styleClass="alert alert-info" />
 		<h:form>
-	     <h:inputHidden value="#{alterarProdutoBean.produto.cdProduto}" />
+			<h:inputHidden value="#{alterarProdutoBean.produto.cdProduto}" />
+			<h:inputHidden id="estoque" value="#{alterarProdutoBean.produto.estoque}" />
 			<h:panelGrid columns="2">
-
+			
+				
 
 				<h:outputLabel value="Codigo de Barra" for="barra" />
 				<h:inputText id="barra" styleClass="form-control"
@@ -37,7 +39,7 @@
 					value="#{alterarProdutoBean.produto.descricao}" />
 			</h:panelGrid>
 			<h:commandButton value="Alterar" styleClass="btn btn-primary"
-					actionListener="#{alterarProdutoBean.alterar}" />
+				actionListener="#{alterarProdutoBean.alterar}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

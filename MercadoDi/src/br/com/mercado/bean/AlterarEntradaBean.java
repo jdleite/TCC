@@ -20,10 +20,12 @@ public class AlterarEntradaBean {
 	private Entrada entrada;
 	private EntradaDao dao;
 	
+	
 	@PostConstruct
 	private void init(){
 		dao =  new EntradaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());	
 		entrada = new Entrada();
+		
 		entrada.setDtCompra(Calendar.getInstance());
 		entrada.setDtValidade(Calendar.getInstance());
 	}
@@ -51,6 +53,9 @@ public class AlterarEntradaBean {
 	public void setEntrada(Entrada entrada) {
 		this.entrada = entrada;
 	}
+
+
+
 	
 	
 	

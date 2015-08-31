@@ -9,47 +9,46 @@
 
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="content">
-		<h1>Listar Produto</h1>
-		<h:messages styleClass="alert alert-info" />
-		<h:form>
-			<h:dataTable value="#{listaProdutoBean.lista}" var="p"
-				styleClass="table">
-				<h:column>
-					<f:facet name="header">Nome do Produto</f:facet>
-	   			#{p.nmProduto}
-	   		</h:column>
-				<h:column>
-					<f:facet name="header">Codigo de Barra</f:facet>
-	   			#{p.cdBarra}
-	   		</h:column>
-				<h:column>
-					<f:facet name="header">Peso</f:facet>
-	   			#{p.peso}
-	   		</h:column>
-				<h:column>
-					<f:facet name="header">Descrição</f:facet>
-	   			#{p.descricao}
-	   		</h:column>
-				<h:column>
-					<f:facet name="header">Tipo de Unidade</f:facet>
-	   			#{p.categoria.unidade}
-	   		</h:column>
-				<h:column>
-					<f:facet name="header">Tipo da Categoria</f:facet>
-	   			#{p.categoria.tipo}
-	   		</h:column>
-				<h:column>
-					<h:commandButton value="Excluir"
-						action="#{excluirProdutoBean.excluir}" update="tabela">
+		<p:growl autoUpdate="true" />
+		<h:form enctype="multipart/form-data">
+			<p:dataTable value="#{listaProdutoBean.lista}" id="tabela" var="p"
+				emptyMessage="Produtos não encontrado" styleClass="table">
+				<f:facet name="header">
+                        Lista Produto
+                      </f:facet>
+				<p:column headerText="Nome do Produto">
+					<h:outputText value="#{p.nmProduto}" />
+				</p:column>
+				<p:column headerText="Codigo de Barra">
+					<h:outputText value="#{p.cdBarra}" />
+				</p:column>
+				<p:column headerText="Peso">
+					<h:outputText value="#{p.peso}" />
+				</p:column>
+				<p:column headerText="Descrição">
+					<h:outputText value="#{p.descricao}" />
+				</p:column>
+				<p:column headerText="Tipo de Unidade">
+					<h:outputText value="#{p.categoria.unidade}" />
+				</p:column>
+				<p:column headerText="Tipo de Categoria">
+					<h:outputText value="#{p.categoria.tipo}" />
+				</p:column>
+				<p:column headerText="Quantidade">
+					<h:outputText value="#{p.estoque}" />
+				</p:column>
+				<p:column>
+					<p:commandButton icon="ui-icon-trash" update="tabela" title="Deletar"
+						action="#{excluirProdutoBean.excluir}">
 						<f:setPropertyActionListener value="#{p}"
 							target="#{excluirProdutoBean.produto}" />
-					</h:commandButton>
-					<h:commandButton value="Alterar" action="alterar-produto">
+					</p:commandButton>
+					<p:commandButton icon="ui-icon-pencil" action="alterar-produto">
 						<f:setPropertyActionListener value="#{p}"
 							target="#{alterarProdutoBean.produto}" />
-					</h:commandButton>
-				</h:column>
-			</h:dataTable>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

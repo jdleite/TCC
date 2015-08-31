@@ -10,7 +10,8 @@
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="content">
 		<h1>Produtos</h1>
-		<h:messages styleClass="alert alert-info" />
+		<p:messages autoUpdate="true"/>
+	    <p:growl autoUpdate="true"/>
 		<h:form>
 			<h:dataTable value="#{listaProdutoBean.lista}" var="p"
 				styleClass="table">
@@ -27,10 +28,10 @@
 	   			#{p.nmProduto}
 	   		</h:column>
 				<h:column>
-					<h:commandButton value="Selecionar" action="cadastro-entrada">
+					<p:commandButton icon="ui-icon-check" action="cadastro-entrada">
 						<f:setPropertyActionListener value="#{p.cdProduto}"
 							target="#{cadastroEntradaBean.cdProduto}" />
-					</h:commandButton>
+					</p:commandButton>
 				</h:column>
 
 			</h:dataTable>

@@ -22,4 +22,41 @@ public class EntradaDAOImpl extends DaoImpl<Entrada, Integer> implements
 		return query.getResultList();
 	}
 
+	@Override
+	public void somar(int id, int quantidade) {
+		em.getTransaction().begin();
+		em.createNativeQuery(
+				"UPDATE TB_DI_PRODUTO  set ESTOQUE = ESTOQUE +"
+						+ quantidade + " where CD_PRODUTO =" + id)
+				.executeUpdate();
+
+		em.getTransaction().commit();
+		
+	}
+
+	@Override
+	public void deletar(int id) {
+		em.getTransaction().begin();
+		em.createNativeQuery("DELETE FROM TB_DI_ENTRADA_PRODUTO  WHERE CD_PRODUTO = " + id).executeUpdate();
+		
+		em.getTransaction().commit();
+		
+	}
+
+	@Override
+	public void alterarEstoque(int id, int quantidade) {
+		em.getTransaction().begin();
+		em.createNativeQuery(
+				"UPDATE TB_DI_PRODUTO  set ESTOQUE = ESTOQUE -"
+						+ quantidade + " where CD_PRODUTO =" + id)
+				.executeUpdate();
+
+		em.getTransaction().commit();
+		
+	}
+	
+	
+
+	
+
 }

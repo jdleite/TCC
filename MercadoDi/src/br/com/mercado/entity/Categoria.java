@@ -13,7 +13,8 @@ import javax.persistence.Table;
 @Entity
 @SequenceGenerator(name = "seqCategoria", sequenceName = "SEQ_CATEGORIA", allocationSize = 1)
 @Table(name = "TB_DI_CATEGORIA")
-public class Categoria implements Serializable{
+public class Categoria implements Serializable{	
+	private static final long serialVersionUID = 1292760564177048211L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCategoria")
 	@Column(name = "CD_CATEGORIA")

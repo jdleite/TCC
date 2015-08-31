@@ -32,9 +32,9 @@ public class ExcluirCategoriaBean {
 	public void excluir(){
 		FacesMessage msg = null;
 		try {
-			
-			dao.delete(categoria.getCdCategoria());		
 			lista.remove(categoria);
+			dao.delete(categoria.getCdCategoria());		
+			
 			msg = new FacesMessage("Excluído com Sucesso!");
 		} catch (DBCommitException e) {
 			e.printStackTrace();

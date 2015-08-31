@@ -10,7 +10,8 @@
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="content">
 		<h1>Fornecedores</h1>
-		<h:messages styleClass="alert alert-info" />
+		<p:messages autoUpdate="true"/>
+	    <p:growl autoUpdate="true"/>
 		<h:form>
 			<h:dataTable value="#{listaFornecedorBean.lista}" var="f"
 				styleClass="table">

@@ -20,5 +20,14 @@ public class ProdutoDAOImpl extends DaoImpl<Produto, Integer> implements Produto
 				em.createQuery("select p from Produto p",Produto.class);
 			return query.getResultList();
 	}
+
+	@Override
+	public List<Produto> listarNome() {
+		TypedQuery<Produto> query = 
+				em.createQuery("select from Produto p where p.nmProduto",Produto.class);
+			return query.getResultList();
+	}
+
+	
 			
 }

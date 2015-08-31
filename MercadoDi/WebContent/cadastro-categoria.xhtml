@@ -12,31 +12,34 @@
 	    Cadastro de Categoria
 	</ui:define>
 	<ui:define name="content">
-		<h1>Cadastro de Categoria</h1>
-		<h:messages styleClass="alert alert-info" />
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Tipo" for="tipo" />
-				<h:inputText id="tipo" styleClass="form-control"
-					value="#{cadastroCategoriaBean.categoria.tipo}" />
+		<p:panel toggleable="true" toggleOrientation="vertical"
+			header="Cadastro de Categoria">
+			<h:form>
+				<p:messages autoUpdate="true" />
+				<p:growl autoUpdate="true" />
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Tipo" for="tipo" />
+					<p:inputText id="tipo" styleClass="form-control"
+						value="#{cadastroCategoriaBean.categoria.tipo}" />
 
 
-				<h:outputLabel value="Tipo de Unidade" for="unidade" />
-				<h:inputText id="unidade" styleClass="form-control"
-					value="#{cadastroCategoriaBean.categoria.unidade}" />
-					
-					
-				<h:outputLabel value="Descrição" for="descricao" />
-				<h:inputTextarea id="descricao" styleClass="form-control"
-					value="#{cadastroCategoriaBean.categoria.descricao}" />
+					<p:outputLabel value="Tipo de Embalagem" for="unidade" />
+					<p:inputText id="unidade" styleClass="form-control"
+						value="#{cadastroCategoriaBean.categoria.unidade}" />
+
+
+					<p:outputLabel value="Descrição" for="descricao" />
+					<p:inputTextarea id="descricao" styleClass="form-control"
+						value="#{cadastroCategoriaBean.categoria.descricao}" />
 
 
 
+				</h:panelGrid>
+				<p:commandButton value="Salvar" styleClass="btn btn-primary"
+					actionListener="#{cadastroCategoriaBean.cadastrar}" />
+			</h:form>
+		</p:panel>
 
-			</h:panelGrid>
-			<h:commandButton value="Salvar" styleClass="btn btn-primary"
-				actionListener="#{cadastroCategoriaBean.cadastrar}" />
-		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

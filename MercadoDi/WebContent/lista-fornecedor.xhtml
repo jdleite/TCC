@@ -9,49 +9,48 @@
 
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="content">
-		<h1>Listar Fornecedor</h1>		
-		<h:messages styleClass="alert alert-info" />
+
+		<p:messages autoUpdate="true" />
+		<p:growl autoUpdate="true" />
 		<h:form>
-		<h:dataTable value="#{listaFornecedorBean.lista}" var="f"
-			styleClass="table">
-			<h:column>
-				<f:facet name="header">Nome</f:facet>
-	   			#{f.nome}
-	   		</h:column>
-			<h:column>
-				<f:facet name="header">Endereco</f:facet>
-	   			#{f.endereco}
-	   		</h:column>
-			<h:column>
-				<f:facet name="header">Telefone</f:facet>
-	   			#{f.telefone}
-	   		</h:column>
-			<h:column>
-				<f:facet name="header">Cep</f:facet>
-	   			#{f.cep}
-	   		</h:column>
-	   		<h:column>
-	   			<f:facet name="header">Numero</f:facet>
-	   			#{f.numero}
-	   		</h:column>
-			<h:column>
-				<f:facet name="header">Bairro</f:facet>
-	   			#{f.bairro}
-	   		</h:column>
-	   		<h:column>
-		    		<h:commandButton 
-		    			value="Excluir"
-		    			action="#{excluirFornecedorBean.excluir}" update="tabela">
-		    			<f:setPropertyActionListener 
-		    				value="#{f}" target="#{excluirFornecedorBean.fornecedor}"/>
-		    		</h:commandButton>
-		    		<h:commandButton value="Alterar" action="alterar-fornecedor">
+			<p:dataTable value="#{listaFornecedorBean.lista}" var="f"
+				 emptyMessage="Fornecedores não encontrado" styleClass="table">
+				<f:facet name="header">
+                        Lista Fornecedor
+                      </f:facet>
+				<p:column headerText="Nome">
+					<h:outputText value="#{f.nome}" />
+				</p:column>
+				<p:column headerText="Endereço">
+					<h:outputText value="#{f.endereco}" />
+				</p:column>
+				<p:column headerText="Telefone">
+					<h:outputText value="#{f.telefone}" />
+				</p:column>
+				<p:column headerText="Cep">
+					<h:outputText value="#{f.cep}" />
+				</p:column>
+				<p:column headerText="Numero">
+					<h:outputText value="#{f.numero}" />
+				</p:column>
+				<p:column headerText="Bairro">
+					<h:outputText value="#{f.bairro}" />
+				</p:column>
+				
+				<p:column>
+
+					<p:commandButton icon="ui-icon-pencil" action="alterar-fornecedor">
 						<f:setPropertyActionListener value="#{f}"
 							target="#{alterarForncedorBean.fornecedor}" />
-					</h:commandButton>
-	   		 </h:column>
+					</p:commandButton>
+					<p:commandButton icon="ui-icon-trash" update="" title="Apagar"
+						action="#{excluirFornecedorBean.excluir}">
+						<f:setPropertyActionListener value="#{f}"
+							target="#{excluirFornecedorBean.fornecedor}" />
+					</p:commandButton>
+				</p:column>
 
-		</h:dataTable>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

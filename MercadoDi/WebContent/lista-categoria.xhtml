@@ -9,33 +9,40 @@
 
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="content">
-		<h1>Listar Categoria</h1>
-		<h:messages styleClass="alert alert-info" />
-		<h:form>
-			<h:dataTable value="#{listaCategoriaBean.lista}" var="c"
-				styleClass="table">
-				<h:column>
-					<f:facet name="header">Tipo</f:facet>
-	   			#{c.tipo}
-	   		</h:column>
-				<h:column>
-					<f:facet name="header">Descrição</f:facet>
-	   			#{c.descricao}
-	   		</h:column>
 
-				<h:column>
-					<h:commandButton value="Excluir"
-						action="#{excluirCategoriaBean.excluir}" update="tabela">
-						<f:setPropertyActionListener value="#{c}"
-							target="#{excluirCategoriaBean.categoria}" />
-					</h:commandButton>
-					<h:commandButton value="Alterar" action="alterar-categoria">
+		<p:messages autoUpdate="true" />
+		<p:growl autoUpdate="true" />
+		<h:form>
+			<p:dataTable var="c" value="#{listaCategoriaBean.lista}" id="tabela"
+				emptyMessage="Categoria não encontrado">
+				<f:facet name="header">
+                        Lista Categoria
+                      </f:facet>
+				<p:column headerText="Tipo">
+					<h:outputText value="#{c.tipo}" />
+				</p:column>
+
+				<p:column headerText="Unidade">
+					<h:outputText value="#{c.unidade}" />
+				</p:column>
+
+				<p:column headerText="Descrição">
+					<h:outputText value="#{c.descricao}" />
+				</p:column>
+				<p:column>
+
+					<p:commandButton icon="ui-icon-pencil" action="alterar-categoria" title="Alterar">
 						<f:setPropertyActionListener value="#{c}"
 							target="#{alterarCategoriaBean.categoria}" />
-					</h:commandButton>
-				</h:column>
+					</p:commandButton>
+					<p:commandButton icon="ui-icon-trash" update="tabela" 
+						title="Deletar" action="#{excluirCategoriaBean.excluir}">
+						<f:setPropertyActionListener value="#{c}"
+							target="#{excluirCategoriaBean.categoria}" />
+					</p:commandButton>
+				</p:column>
 
-			</h:dataTable>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

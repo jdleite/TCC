@@ -30,6 +30,7 @@ public class ExcluirEntradaBean {
 		FacesMessage msg = null;
 		try {
 			dao.delete(entrada.getCdEntrada());
+			dao.alterarEstoque(entrada.getProduto().getCdProduto(), entrada.getQtCompra());
 			msg = new FacesMessage("Excluido com Sucesso!");
 		} catch (DBCommitException e) {
 			e.printStackTrace();

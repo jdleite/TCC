@@ -9,43 +9,40 @@
 
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="content">
-		<h1>Lista de Entrada de Produtos</h1>
-		<h:messages styleClass="alert alert-info" />
+		<p:messages autoUpdate="true" />
+		<p:growl autoUpdate="true" />
 		<h:form>
-			<h:dataTable value="#{listaEntradaBean.lista}" var="e" styleClass="table">
-				<h:column>
-					<f:facet name="header">Preço da Compra</f:facet>
-	   			#{e.precoCompra}
-	   		</h:column>
-				<h:column>
-					<f:facet name="header">Quantidade</f:facet>
-	   			#{e.qtCompra}
-	   		</h:column>
-				<h:column>
-					<f:facet name="header">Validade</f:facet>
+			<p:dataTable value="#{listaEntradaBean.lista}" var="e"
+				emptyMessage="Entradas não encontrada" styleClass="table" id="tab">
+				<f:facet name="header">
+                        Lista Entrada
+                      </f:facet>
+				<p:column headerText="Preço da Compra">
+					<h:outputText value="#{e.precoCompra}" />
+				</p:column>
+				<p:column headerText="Quantidade">
+					<h:outputText value="#{e.qtCompra}" />
+				</p:column>
+				<p:column headerText="Validade">
 					<h:outputText value="#{e.dtValidade.time}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header">Compra</f:facet>
+				 <f:convertDateTime pattern="dd/MM/yyyy" />
+				 </h:outputText>
+				</p:column>
+				<p:column headerText="Compra">
 					<h:outputText value="#{e.dtCompra.time}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-				</h:column>
-				<h:column>
-					<h:commandButton value="Excluir"
-						action="#{excluirEntradaBean.excluir}" update="tabela">
+				 <f:convertDateTime pattern="dd/MM/yyyy" />
+				 </h:outputText>
+				</p:column>
+				<p:column>
+					<p:commandButton icon="ui-icon-trash" update="tab" title="Deletar"
+						action="#{excluirEntradaBean.excluir}">
 						<f:setPropertyActionListener value="#{e}"
 							target="#{excluirEntradaBean.entrada}" />
-					</h:commandButton>
-					<h:commandButton value="Alterar" action="alterar-entrada">
-						<f:setPropertyActionListener value="#{e}"
-							target="#{alterarEntradaBean.entrada}" />
-					</h:commandButton>
-				</h:column>
+					</p:commandButton>
 
-			</h:dataTable>
+				</p:column>
+
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

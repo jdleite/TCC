@@ -12,38 +12,41 @@
 	    Cadastro de Fornecedor
 	</ui:define>
 	<ui:define name="content">
-		<h1>Cadastro de Fornecedor</h1>
-		<h:messages styleClass="alert alert-info" />
+		<p:panel toggleable="true" toggleOrientation="vertical"
+			header="Cadastro Fornecedor">
 		<h:form>
+			<p:messages autoUpdate="true" />
+			<p:growl autoUpdate="true" />
 			<h:panelGrid columns="6">
-				<h:outputLabel value="Nome" for="nome" />
-				<h:inputText id="nome" styleClass="form-control"
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" styleClass="form-control"
 					value="#{cadastroFornecedorBean.fornecedor.nome}" />
 
-				<h:outputLabel value="Endereço" for="endereco" />
-				<h:inputText id="endereco" styleClass="form-control"
+				<p:outputLabel value="Endereço" for="endereco" />
+				<p:inputText id="endereco" styleClass="form-control"
 					value="#{cadastroFornecedorBean.fornecedor.endereco}" />
 
-				<h:outputLabel value="Telefone" for="telefone" />
-				<h:inputText id="telefone" styleClass="form-control"
+				<p:outputLabel value="Telefone" for="telefone" />
+				<p:inputText id="telefone" styleClass="form-control"
 					value="#{cadastroFornecedorBean.fornecedor.telefone}" />
 
-				<h:outputLabel value="Cep" for="cep" />
-				<h:inputText id="cep" styleClass="form-control"
+				<p:outputLabel value="Cep" for="cep" />
+				<p:inputText id="cep" styleClass="form-control"
 					value="#{cadastroFornecedorBean.fornecedor.cep}" />
 
-				<h:outputLabel value="Numero" for="numero" />
-				<h:inputText id="numero" styleClass="form-control"
+				<p:outputLabel value="Numero" for="numero" />
+				<p:inputText id="numero" styleClass="form-control"
 					value="#{cadastroFornecedorBean.fornecedor.numero}" />
 
-				<h:outputLabel value="Bairro" for="bairro" />
-				<h:inputText id="bairro" styleClass="form-control"
+				<p:outputLabel value="Bairro" for="bairro" />
+				<p:inputText id="bairro" styleClass="form-control"
 					value="#{cadastroFornecedorBean.fornecedor.bairro}" />
 			</h:panelGrid>
 
-			<h:commandButton value="Salvar" styleClass="btn btn-primary"
+			<p:commandButton value="Salvar" styleClass="btn btn-primary"
 				actionListener="#{cadastroFornecedorBean.cadastrar}" />
 		</h:form>
+		</p:panel>
 	</ui:define>
 </ui:composition>
 </html>
