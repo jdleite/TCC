@@ -12,40 +12,49 @@
 		<p:growl autoUpdate="true" />
 		<h:form enctype="multipart/form-data">
 			<p:dataTable value="#{listaProdutoBean.lista}" id="tabela" var="p"
-				emptyMessage="Produtos não encontrado" styleClass="table">
+				emptyMessage="Produtos não encontrado" >
 				<f:facet name="header">
                         Lista Produto
                       </f:facet>
 				<p:column headerText="Nome do Produto">
 					<h:outputText value="#{p.nmProduto}" />
 				</p:column>
-				<p:column headerText="Codigo de Barra">
-					<h:outputText value="#{p.cdBarra}" />
-				</p:column>
-				<p:column headerText="Peso">
-					<h:outputText value="#{p.peso}" />
-				</p:column>
-				<p:column headerText="Descrição">
-					<h:outputText value="#{p.descricao}" />
-				</p:column>
-				<p:column headerText="Tipo de Unidade">
-					<h:outputText value="#{p.categoria.unidade}" />
-				</p:column>
-				<p:column headerText="Tipo de Categoria">
-					<h:outputText value="#{p.categoria.tipo}" />
+				<p:column headerText="Preço">
+					<h:outputText value="#{p.preco}" />
 				</p:column>
 				<p:column headerText="Quantidade">
 					<h:outputText value="#{p.estoque}" />
 				</p:column>
+				<p:column headerText="Tipo de Unidade">
+					<h:outputText value="#{p.categoria.unidade}" />
+				</p:column>
+				<p:column headerText="Descrição">
+					<h:outputText value="#{p.descricao}" />
+				</p:column>
+				<p:column headerText="Peso">
+					<h:outputText value="#{p.peso}" />
+				</p:column>
+				<p:column headerText="Codigo de Barra">
+					<h:outputText value="#{p.cdBarra}" />
+				</p:column>
+
+
+				
+				<p:column headerText="Tipo de Categoria">
+					<h:outputText value="#{p.categoria.tipo}" />
+				</p:column>
+
+
 				<p:column>
-					<p:commandButton icon="ui-icon-trash" update="tabela" title="Deletar"
-						action="#{excluirProdutoBean.excluir}">
-						<f:setPropertyActionListener value="#{p}"
-							target="#{excluirProdutoBean.produto}" />
-					</p:commandButton>
+					
 					<p:commandButton icon="ui-icon-pencil" action="alterar-produto">
 						<f:setPropertyActionListener value="#{p}"
 							target="#{alterarProdutoBean.produto}" />
+					</p:commandButton>
+					<p:commandButton icon="ui-icon-trash" update="tabela"
+						title="Deletar" action="#{excluirProdutoBean.excluir}">
+						<f:setPropertyActionListener value="#{p}"
+							target="#{excluirProdutoBean.produto}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>

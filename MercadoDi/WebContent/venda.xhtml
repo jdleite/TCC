@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/_template.xhtml">
+	<ui:define name="title">
+	    Venda
+	</ui:define>
+	<ui:define name="content">
+		<p:panel toggleable="true" toggleOrientation="vertical"
+			header="Venda de Produto">
+			<h:form>
+				<p:messages autoUpdate="true" />
+				<p:growl autoUpdate="true" />
+				<h:panelGrid columns="50" layout="grid">	
+					<p:outputLabel value="Codigo de Barra" for="barra" />
+					<p:inputText id="barra" styleClass="form-control"
+						value="#{cadastroProdutoBean.produto.cdBarra}" />
+					<p:commandButton value="Buscar" action="lista-nome-categoria" />
+                    
+
+					<p:outputLabel value="Preço Unidade" for="preco" />
+					<p:inputText id="preco" styleClass="form-control"
+						value="#{cadastroProdutoBean.produto.cdBarra}" />
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
+
+
+

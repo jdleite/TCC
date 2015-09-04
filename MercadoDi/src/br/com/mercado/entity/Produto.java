@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -40,6 +39,8 @@ public class Produto implements Serializable{
 	private String descricao;
 	@Column(name = "PESO", length = 10, nullable = true)
 	private String peso;
+	@Column(name = "PRECO", length = 10, nullable = true)
+	private double preco;
 	@Column(name = "ESTOQUE", length = 10, nullable = true)
 	private int estoque;
 
@@ -117,6 +118,14 @@ public class Produto implements Serializable{
 
 	public void setEntrada(List<Entrada> entrada) {
 		this.entrada = entrada;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
 	}
 
 	

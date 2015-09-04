@@ -54,16 +54,20 @@ public class Teste {
         
         prod.setFornecedor(forn);
         prod.setCategoria(cat);
+        prod.setEstoque(1000);
         prod.setNmProduto("c");
         prod.setDescricao("LAta");
         prod.setPeso("350 ML");
         
         ent.setProduto(prod);
-        ent.setQtCompra(20);
+        ent.setQtCompra(100);
         ent.setPrecoVenda(5.90);
         
         
+        
+        
         try {
+        	pDao.alterarPreco(1,ent.getPrecoVenda());
 			cDao.insert(cat);
 			fDao.insert(forn);
 			pDao.insert(prod);

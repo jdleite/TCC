@@ -12,40 +12,40 @@
 	    Alterar Etrada
 	</ui:define>
 	<ui:define name="content">
-		<h1>Alterar Entrada</h1>
-		<h:messages styleClass="alert alert-info" />
+
 		<h:form>
-		
-			<h:inputHidden value="#{alterarEntradaBean.entrada.cdEntrada}"/>
-			<h:panelGrid columns="2">
-			
-				<h:outputLabel value="Preço da compra" for="preco" />
-				<h:inputText id="preco" styleClass="form-control"
+			<p:messages autoUpdate="true" />
+			<p:growl autoUpdate="true" />
+			<h:inputHidden value="#{alterarEntradaBean.entrada.cdEntrada}" />
+			<p:panelGrid columns="2">
+
+				<p:outputLabel value="Preço da compra" for="preco" />
+				<p:inputText id="preco" styleClass="form-control"
 					value="#{alterarEntradaBean.entrada.precoCompra}" />
 
-				<h:outputLabel value="Quantidade" for="quantidade" />
-				<h:inputText id="quantidade" styleClass="form-control"
+				<p:outputLabel value="Quantidade" for="quantidade" />
+				<p:inputText id="quantidade" styleClass="form-control"
 					value="#{alterarEntradaBean.entrada.qtCompra}" />
 
 
-				<h:outputLabel value="Data Validade" for="validade" />
-				<h:inputText id="validade" styleClass="form-control"
+				<p:outputLabel value="Data Validade" for="validade" />
+				<p:inputText id="validade" styleClass="form-control"
 					value="#{alterarEntradaBean.entrada.dtValidade.time}">
 					<f:convertDateTime pattern="dd/MM/yyyy"
 						timeZone="America/Sao_Paulo" />
-				</h:inputText>
+				</p:inputText>
 
 
-				<h:outputLabel value="Data da compra" for="dataCompra" />
-				<h:inputText id="dataCompra" styleClass="form-control"
+				<p:outputLabel value="Data da compra" for="dataCompra" />
+				<p:inputText id="dataCompra" styleClass="form-control"
 					value="#{alterarEntradaBean.entrada.dtCompra.time}">
 					<f:convertDateTime pattern="dd/MM/yyyy"
 						timeZone="America/Sao_Paulo" />
-				</h:inputText>
-				
-			</h:panelGrid>
-			<h:commandButton value="Alterar" styleClass="btn btn-primary" title="Alterar"
-					actionListener="#{alterarEntradaBean.alterar}" />
+				</p:inputText>
+
+			</p:panelGrid>
+			<p:commandButton value="Alterar" styleClass="btn btn-primary"
+				title="Alterar" actionListener="#{alterarEntradaBean.alterar}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

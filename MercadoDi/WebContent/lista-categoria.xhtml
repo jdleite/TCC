@@ -29,18 +29,22 @@
 				<p:column headerText="Descrição">
 					<h:outputText value="#{c.descricao}" />
 				</p:column>
-				<p:column>
+				<div id="efeito">
+					<p:column>
 
-					<p:commandButton icon="ui-icon-pencil" action="alterar-categoria" title="Alterar">
-						<f:setPropertyActionListener value="#{c}"
-							target="#{alterarCategoriaBean.categoria}" />
-					</p:commandButton>
-					<p:commandButton icon="ui-icon-trash" update="tabela" 
-						title="Deletar" action="#{excluirCategoriaBean.excluir}">
-						<f:setPropertyActionListener value="#{c}"
-							target="#{excluirCategoriaBean.categoria}" />
-					</p:commandButton>
-				</p:column>
+						<p:commandButton icon="ui-icon-pencil" action="alterar-categoria"
+							title="Alterar">
+							<f:setPropertyActionListener value="#{c}"
+								target="#{alterarCategoriaBean.categoria}" />
+						</p:commandButton>
+						<p:commandButton icon="ui-icon-trash" update="tabela"
+							title="Deletar" action="#{excluirCategoriaBean.excluir}">
+							<f:setPropertyActionListener value="#{c}"
+								target="#{excluirCategoriaBean.categoria}" />
+						</p:commandButton>
+					</p:column>
+				</div>
+
 
 			</p:dataTable>
 		</h:form>

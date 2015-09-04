@@ -45,6 +45,8 @@ public class CadastroEntradaBean {
 	public void cadastrar() {
 		FacesMessage msg;
 		try {
+
+		    daoProd.alterarPreco(cdProduto,entrada.getPrecoVenda());
 			produto = daoProd.findById(cdProduto);
 			entrada.setProduto(produto);
 			dao.insert(entrada);

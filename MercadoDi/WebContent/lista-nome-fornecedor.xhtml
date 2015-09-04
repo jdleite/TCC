@@ -9,28 +9,25 @@
 
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="content">
-		<h1>Fornecedores</h1>
-		<p:messages autoUpdate="true"/>
-	    <p:growl autoUpdate="true"/>
+		<p:messages autoUpdate="true" />
+		<p:growl autoUpdate="true" />
 		<h:form>
-			<h:dataTable value="#{listaFornecedorBean.lista}" var="f"
+			<p:dataTable value="#{listaFornecedorBean.lista}" var="f"
 				styleClass="table">
-				<h:column>
-					<f:facet name="header">Nome</f:facet>
-	   			#{f.nome}
-	   		</h:column>
 
-				<h:column>
-					<f:facet name="header">Telefone</f:facet>
-	   			#{f.telefone}
-	   		</h:column>
-				<h:column>
-					<h:commandButton value="Selecionar" action="cadastro-produto">
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{f.nome}" />
+				</p:column>
+
+
+				<p:column>
+					<p:commandButton value="Selecionar" action="cadastro-produto">
 						<f:setPropertyActionListener value="#{f.cdFornecedor}"
 							target="#{cadastroProdutoBean.cdFornecedor}" />
-					</h:commandButton>
-				</h:column>
-			</h:dataTable>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

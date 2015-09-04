@@ -5,14 +5,24 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+
+
+
+
 <h:head>
 	<title><ui:insert name="title">Mercado DI</ui:insert></title>
 </h:head>
 
+
 <h:body>
-	<h1>Mercado DI</h1>
+
+	<p:column rowpan="3">
+		<p:graphicImage url="../resources/img/logo.png" width="100px"
+			height="100px" />
+	</p:column>
 	<p:menubar>
 		<p:submenu label="Cadastro">
+			<p:menuitem value="Venda" outcome="venda" />
 			<p:menuitem value="Produto" outcome="cadastro-produto" />
 			<p:menuitem value="Entrada" outcome="cadastro-entrada" />
 			<p:menuitem value="Fornecedor" outcome="cadastro-fornecedor" />
@@ -29,10 +39,35 @@
 			<p:menuitem value="Estoque" outcome="relatorio-estoque" />
 		</p:submenu>
 	</p:menubar>
+	
+	<p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
+	<f:facet name="default" />
+
+	<f:facet name="start">
+		<p:graphicImage url="../resources/img/1.gif" />
+	</f:facet>
+
+
+</p:ajaxStatus>
+
+<p:ajaxStatus onstart="PF('statusDialog').show()"
+	onsuccess="PF('statusDialog').hide()" />
+
+<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+	closable="false" resizable="false" showHeader="false">
+	<p:graphicImage url="../resources/img/1.gif" />
+</p:dialog>
 
 	<div id="content">
 		<ui:insert name="content">
 		</ui:insert>
 	</div>
+
+
+	<ui:insert name="footer">
+    	Mercado DI, Todos os Direitos Reservados
+  </ui:insert>
+
 </h:body>
+
 </html>

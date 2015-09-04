@@ -17,13 +17,13 @@
 			<h:form>
 				<p:messages autoUpdate="true" />
 				<p:growl autoUpdate="true" />
-				<h:panelGrid columns="7">
+				<h:panelGrid columns="3">
 					<p:outputLabel value="Produto" for="codigo" />
 					<p:inputText id="codigo" styleClass="form-control"
 						value="#{cadastroEntradaBean.cdProduto}" />
-					<p:commandButton value="Selecionar" action="lista-nome-produto" />
-
-
+					<p:commandButton icon="ui-icon-search"  action="lista-nome-produto" />
+                    </h:panelGrid>
+                     <h:panelGrid columns="2">
 					<p:outputLabel value="Preço da compra" for="preco" />
 					<p:inputText id="preco" styleClass="form-control"
 						value="#{cadastroEntradaBean.entrada.precoCompra}" />

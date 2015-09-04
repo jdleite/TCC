@@ -12,33 +12,38 @@
 	    Alterar Produto
 	</ui:define>
 	<ui:define name="content">
-		<h1>Alterar Categoria</h1>
 		<h:messages styleClass="alert alert-info" />
 		<h:form>
+			<p:messages autoUpdate="true" />
+		
+
 			<h:inputHidden value="#{alterarProdutoBean.produto.cdProduto}" />
-			<h:inputHidden id="estoque" value="#{alterarProdutoBean.produto.estoque}" />
-			<h:panelGrid columns="2">
-			
-				
+			<h:inputHidden id="estoque"
+				value="#{alterarProdutoBean.produto.estoque}" />
 
-				<h:outputLabel value="Codigo de Barra" for="barra" />
-				<h:inputText id="barra" styleClass="form-control"
-					value="#{alterarProdutoBean.produto.cdBarra}" />
+			<p:panelGrid columns="2">
 
-				<h:outputLabel value="Nome do Produto" for="Nome" />
-				<h:inputText id="nome" styleClass="form-control"
+				<p:outputLabel value="Nome do Produto" for="nome" />
+				<p:inputText id="nome" styleClass="form-control"
 					value="#{alterarProdutoBean.produto.nmProduto}" />
 
 
-				<h:outputLabel value="Peso" for="peso" />
-				<h:inputText id="peso" styleClass="form-control"
+				<p:outputLabel value="Codigo de Barra" for="barra" />
+				<p:inputText id="barra" styleClass="form-control"
+					value="#{alterarProdutoBean.produto.cdBarra}" />
+
+
+
+
+				<p:outputLabel value="Peso" for="peso" />
+				<p:inputText id="peso" styleClass="form-control"
 					value="#{alterarProdutoBean.produto.peso}" />
 
-				<h:outputLabel value="Descrição" for="descricao" />
-				<h:inputTextarea id="descricao" styleClass="form-control"
+				<p:outputLabel value="Descrição" for="descricao" />
+				<p:inputTextarea id="descricao" styleClass="form-control"
 					value="#{alterarProdutoBean.produto.descricao}" />
-			</h:panelGrid>
-			<h:commandButton value="Alterar" styleClass="btn btn-primary"
+			</p:panelGrid>
+			<p:commandButton value="Alterar" styleClass="btn btn-primary"
 				actionListener="#{alterarProdutoBean.alterar}" />
 		</h:form>
 	</ui:define>

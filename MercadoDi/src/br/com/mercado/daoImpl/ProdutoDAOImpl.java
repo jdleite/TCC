@@ -28,6 +28,17 @@ public class ProdutoDAOImpl extends DaoImpl<Produto, Integer> implements Produto
 			return query.getResultList();
 	}
 
+	@Override
+	public void alterarPreco(int id, double preco) {
+		em.getTransaction().begin();
+		em.createNativeQuery(
+				"UPDATE TB_DI_PRODUTO SET PRECO = "+ preco +" WHERE CD_PRODUTO = " + id)
+				.executeUpdate();
+
+		em.getTransaction().commit();	
+		
+	}
+
 	
 			
 }
