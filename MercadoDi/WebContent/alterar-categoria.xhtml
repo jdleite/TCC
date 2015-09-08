@@ -18,22 +18,22 @@
 			<h:inputHidden value="#{alterarCategoriaBean.categoria.cdCategoria}" />
 			<p:panelGrid columns="2">
 				<p:outputLabel value="Tipo" for="tipo" />
-				<p:inputText id="tipo" styleClass="form-control"
+				<p:inputText id="tipo" 
 					value="#{alterarCategoriaBean.categoria.tipo}" />
 
 
 
 				<p:outputLabel value="Tipo de Unidade" for="unidade" />
-				<p:inputText id="unidade" styleClass="form-control"
+				<p:inputText id="unidade" 
 					value="#{alterarCategoriaBean.categoria.unidade}" />
 
 				<p:outputLabel value="Descrição" for="descricao" />
-				<p:inputTextarea id="descricao" styleClass="form-control"
+				<p:inputTextarea id="descricao" 
 					value="#{alterarCategoriaBean.categoria.descricao}" />
 
 
 			</p:panelGrid>
-			<p:commandButton value="Alterar" styleClass="btn btn-primary"
+			<p:commandButton value="Alterar" 
 				title="Alterar" actionListener="#{alterarCategoriaBean.alterar}" />
 		</h:form>
 	</ui:define>

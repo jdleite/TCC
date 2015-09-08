@@ -13,17 +13,18 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
-		<p:messages autoUpdate="true" />
-		<p:growl autoUpdate="true" />
+			<p:messages autoUpdate="true" />
+			<p:growl autoUpdate="true" />
 
-			<h:inputHidden value="#{alterarForncedorBean.fornecedor.cdFornecedor}"/>
+			<h:inputHidden
+				value="#{alterarForncedorBean.fornecedor.cdFornecedor}" />
 			<p:panelGrid columns="2">
 				<p:outputLabel value="Nome" for="nome" />
-				<p:inputText id="nome" styleClass="form-control"
+				<p:inputText id="nome"
 					value="#{alterarForncedorBean.fornecedor.nome}" />
 
 				<p:outputLabel value="Endereço" for="endereco" />
-				<p:inputText id="endereco" styleClass="form-control"
+				<p:inputText id="endereco"
 					value="#{alterarForncedorBean.fornecedor.endereco}" />
 
 				<p:outputLabel value="Telefone" for="telefone" />
@@ -31,21 +32,20 @@
 					value="#{alterarForncedorBean.fornecedor.telefone}" />
 
 				<p:outputLabel value="Cep" for="cep" />
-				<p:inputText id="cep" styleClass="form-control"
-					value="#{alterarForncedorBean.fornecedor.cep}" />
+				<p:inputText id="cep" value="#{alterarForncedorBean.fornecedor.cep}" />
 
 				<p:outputLabel value="Numero" for="numero" />
-				<p:inputText id="numero" styleClass="form-control"
+				<p:inputText id="numero"
 					value="#{alterarForncedorBean.fornecedor.numero}" />
 
 				<p:outputLabel value="Bairro" for="bairro" />
-				<p:inputText id="bairro" styleClass="form-control"
+				<p:inputText id="bairro"
 					value="#{alterarForncedorBean.fornecedor.bairro}" />
 
 
 			</p:panelGrid>
 
-			<p:commandButton value="Alterar" styleClass="btn btn-primary"
+			<p:commandButton value="Alterar"
 				actionListener="#{alterarForncedorBean.alterar}" />
 		</h:form>
 	</ui:define>

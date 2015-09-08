@@ -15,7 +15,7 @@
 		<h:messages styleClass="alert alert-info" />
 		<h:form>
 			<p:messages autoUpdate="true" />
-		
+
 
 			<h:inputHidden value="#{alterarProdutoBean.produto.cdProduto}" />
 			<h:inputHidden id="estoque"
@@ -24,26 +24,25 @@
 			<p:panelGrid columns="2">
 
 				<p:outputLabel value="Nome do Produto" for="nome" />
-				<p:inputText id="nome" styleClass="form-control"
+				<p:inputText id="nome"
 					value="#{alterarProdutoBean.produto.nmProduto}" />
 
 
 				<p:outputLabel value="Codigo de Barra" for="barra" />
-				<p:inputText id="barra" styleClass="form-control"
+				<p:inputText id="barra"
 					value="#{alterarProdutoBean.produto.cdBarra}" />
 
 
 
 
 				<p:outputLabel value="Peso" for="peso" />
-				<p:inputText id="peso" styleClass="form-control"
-					value="#{alterarProdutoBean.produto.peso}" />
+				<p:inputText id="peso" value="#{alterarProdutoBean.produto.peso}" />
 
 				<p:outputLabel value="Descrição" for="descricao" />
-				<p:inputTextarea id="descricao" styleClass="form-control"
+				<p:inputTextarea id="descricao"
 					value="#{alterarProdutoBean.produto.descricao}" />
 			</p:panelGrid>
-			<p:commandButton value="Alterar" styleClass="btn btn-primary"
+			<p:commandButton value="Alterar"
 				actionListener="#{alterarProdutoBean.alterar}" />
 		</h:form>
 	</ui:define>

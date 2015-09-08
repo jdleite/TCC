@@ -14,38 +14,38 @@
 	<ui:define name="content">
 		<p:panel toggleable="true" toggleOrientation="vertical"
 			header="Cadastro Fornecedor">
-		<h:form>
-			<p:messages autoUpdate="true" />
-			<p:growl autoUpdate="true" />
-			<h:panelGrid columns="2">
-				<p:outputLabel value="Nome" for="nome" />
-				<p:inputText id="nome" styleClass="form-control"
-					value="#{cadastroFornecedorBean.fornecedor.nome}" />
+			<h:form>
+				<p:messages autoUpdate="true" />
+				<p:growl autoUpdate="true" />
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Nome" for="nome" />
+					<p:inputText id="nome"
+						value="#{cadastroFornecedorBean.fornecedor.nome}" />
 
-				<p:outputLabel value="Endereço" for="endereco" />
-				<p:inputText id="endereco" styleClass="form-control"
-					value="#{cadastroFornecedorBean.fornecedor.endereco}" />
+					<p:outputLabel value="Endereço" for="endereco" />
+					<p:inputText id="endereco"
+						value="#{cadastroFornecedorBean.fornecedor.endereco}" />
 
-				<p:outputLabel value="Telefone" for="telefone" />
-				<p:inputText id="telefone" styleClass="form-control"
-					value="#{cadastroFornecedorBean.fornecedor.telefone}" />
+					<p:outputLabel value="Telefone" for="telefone" />
+					<p:inputText id="telefone"
+						value="#{cadastroFornecedorBean.fornecedor.telefone}" />
 
-				<p:outputLabel value="Cep" for="cep" />
-				<p:inputText id="cep" styleClass="form-control"
-					value="#{cadastroFornecedorBean.fornecedor.cep}" />
+					<p:outputLabel value="Cep" for="cep" />
+					<p:inputText id="cep"
+						value="#{cadastroFornecedorBean.fornecedor.cep}" />
 
-				<p:outputLabel value="Numero" for="numero" />
-				<p:inputText id="numero" styleClass="form-control"
-					value="#{cadastroFornecedorBean.fornecedor.numero}" />
+					<p:outputLabel value="Numero" for="numero" />
+					<p:inputText id="numero"
+						value="#{cadastroFornecedorBean.fornecedor.numero}" />
 
-				<p:outputLabel value="Bairro" for="bairro" />
-				<p:inputText id="bairro" styleClass="form-control"
-					value="#{cadastroFornecedorBean.fornecedor.bairro}" />
-			</h:panelGrid>
+					<p:outputLabel value="Bairro" for="bairro" />
+					<p:inputText id="bairro"
+						value="#{cadastroFornecedorBean.fornecedor.bairro}" />
+				</h:panelGrid>
 
-			<p:commandButton value="Salvar" styleClass="btn btn-primary"
-				actionListener="#{cadastroFornecedorBean.cadastrar}" />
-		</h:form>
+				<p:commandButton value="Salvar" styleClass="btn btn-primary"
+					actionListener="#{cadastroFornecedorBean.cadastrar}" />
+			</h:form>
 		</p:panel>
 	</ui:define>
 </ui:composition>

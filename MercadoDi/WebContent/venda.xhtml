@@ -12,24 +12,69 @@
 	    Venda
 	</ui:define>
 	<ui:define name="content">
-		<p:panel toggleable="true" toggleOrientation="vertical"
-			header="Venda de Produto">
-			<h:form>
-				<p:messages autoUpdate="true" />
-				<p:growl autoUpdate="true" />
-				<h:panelGrid columns="50" layout="grid">	
-					<p:outputLabel value="Codigo de Barra" for="barra" />
-					<p:inputText id="barra" styleClass="form-control"
-						value="#{cadastroProdutoBean.produto.cdBarra}" />
-					<p:commandButton value="Buscar" action="lista-nome-categoria" />
-                    
 
-					<p:outputLabel value="Preço Unidade" for="preco" />
-					<p:inputText id="preco" styleClass="form-control"
-						value="#{cadastroProdutoBean.produto.cdBarra}" />
-				</h:panelGrid>
-			</h:form>
-		</p:panel>
+		<h:form id="tabela">
+
+					
+			<p:growl autoUpdate="true" />
+			<h:panelGrid columns="1" layout="grid">
+				<p:panel toggleable="false" toggleOrientation="vertical"
+					header="Produto">
+
+					<p:outputLabel value="Codigo de Barra: " for="barra" />
+					<p:inputText id="barra" value="#{vendaBean.cd}" tabindex="1" />
+					
+						<p:commandButton value="Buscar"  update="tabela" tabindex="2"
+							actionListener="#{vendaBean.buscar}" />
+					
+
+
+
+
+					<p:outputLabel value="Produto:" for="produto" />
+					<p:inputText id="produto" readonly="true"
+						value="#{vendaBean.produto.nmProduto}" />
+
+					<p:outputLabel value="Preço R$" for="preco" />
+					<p:inputText id="preco" readonly="true"
+						value="#{vendaBean.produto.preco}" />
+				</p:panel>
+				<p:panel toggleable="false" toggleOrientation="vertical"
+					header="Quantidade">
+					<p:outputLabel value="Quantidade" for="quantidade" />
+					<p:inputText id="quantidade" value="#{vendaBean.qtd}"  tabindex="3"/>
+
+					<p:outputLabel value="Total R$" for="total" />
+					<p:inputText id="total" value="#{vendaBean.total}" />
+					<p:commandButton value="Somar" update="tabela" tabindex="3"
+						actionListener="#{vendaBean.somar}" />
+						
+
+
+				</p:panel>
+
+				<p:panel toggleable="false" toggleOrientation="vertical"
+					header="Produto">
+					<p:dataTable value="#{vendaBean.produtos}" id="tabela" var="p"
+						emptyMessage="Produtos não encontrado">
+						<f:facet name="header">
+                        Lista Produto
+                      </f:facet>
+						<p:column headerText="Nome do Produto">
+							<h:outputText value="#{p.nmProduto}" />
+						</p:column>
+
+					</p:dataTable>
+
+				</p:panel>
+
+
+			</h:panelGrid>
+
+
+
+		</h:form>
+
 	</ui:define>
 </ui:composition>
 </html>

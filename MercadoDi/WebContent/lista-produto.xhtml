@@ -12,24 +12,24 @@
 		<p:growl autoUpdate="true" />
 		<h:form enctype="multipart/form-data">
 			<p:dataTable value="#{listaProdutoBean.lista}" id="tabela" var="p"
-				emptyMessage="Produtos não encontrado" >
+				emptyMessage="Produtos não encontrado">
 				<f:facet name="header">
                         Lista Produto
                       </f:facet>
 				<p:column headerText="Nome do Produto">
 					<h:outputText value="#{p.nmProduto}" />
 				</p:column>
-				<p:column headerText="Preço">
-					<h:outputText value="#{p.preco}" />
-				</p:column>
 				<p:column headerText="Quantidade">
 					<h:outputText value="#{p.estoque}" />
 				</p:column>
+				<p:column headerText="Preço">
+					<h:outputText value="#{p.preco}" />
+				</p:column>
+				<p:column headerText="Tipo de Categoria">
+					<h:outputText value="#{p.categoria.tipo}" />
+				</p:column>
 				<p:column headerText="Tipo de Unidade">
 					<h:outputText value="#{p.categoria.unidade}" />
-				</p:column>
-				<p:column headerText="Descrição">
-					<h:outputText value="#{p.descricao}" />
 				</p:column>
 				<p:column headerText="Peso">
 					<h:outputText value="#{p.peso}" />
@@ -37,16 +37,11 @@
 				<p:column headerText="Codigo de Barra">
 					<h:outputText value="#{p.cdBarra}" />
 				</p:column>
-
-
-				
-				<p:column headerText="Tipo de Categoria">
-					<h:outputText value="#{p.categoria.tipo}" />
+				<p:column headerText="Descrição">
+					<h:outputText value="#{p.descricao}" />
 				</p:column>
-
-
 				<p:column>
-					
+
 					<p:commandButton icon="ui-icon-pencil" action="alterar-produto">
 						<f:setPropertyActionListener value="#{p}"
 							target="#{alterarProdutoBean.produto}" />
@@ -56,9 +51,25 @@
 						<f:setPropertyActionListener value="#{p}"
 							target="#{excluirProdutoBean.produto}" />
 					</p:commandButton>
+					<p:commandButton icon="ui-icon-search" onclick="PF('fun').show()">
+						<f:setPropertyActionListener value="#{p}"
+							target="#{cadastroProdutoBean.produto}" />
+					</p:commandButton>
 				</p:column>
+
 			</p:dataTable>
+			<p:dialog header="Detalhes" showEffect="bounce" id="di"
+				hideEffect="explode" modal="true" widgetVar="fun">
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Nome:" />
+					<h:outputText value="#{cadastroProdutoBean.produto.nmProduto}" />					
+					
+					
+					<p:commandButton value="OK" onclick="PF('fun').hide()" />
+				</h:panelGrid>
+			</p:dialog>
 		</h:form>
+
 	</ui:define>
 </ui:composition>
 </html>

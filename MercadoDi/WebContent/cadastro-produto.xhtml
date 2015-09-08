@@ -21,12 +21,12 @@
 					<p:panel toggleable="true" toggleOrientation="vertical"
 						header="Selecionar">
 						<p:outputLabel value="Categoria" for="categoria" />
-						<p:inputText id="categoria" styleClass="form-control"
+						<p:inputText id="categoria"  readonly="true"
 							value="#{cadastroProdutoBean.cdCategoria}" />
 						<p:commandButton icon="ui-icon-search" action="lista-nome-categoria" />
 
 						<p:outputLabel value="Fornecedor" for="fornecedor" />
-						<p:inputText id="fornecedor" styleClass="form-control"
+						<p:inputText id="fornecedor" 
 							value="#{cadastroProdutoBean.cdFornecedor}" />
 
 						<p:commandButton   icon="ui-icon-search"  action="lista-nome-fornecedor" />
@@ -34,24 +34,24 @@
 				</h:panelGrid>
 				<h:panelGrid columns="4">
 					<p:outputLabel value="Codigo de Barra" for="barra" />
-					<p:inputText id="barra" styleClass="form-control"
+					<p:inputText id="barra" 
 						value="#{cadastroProdutoBean.produto.cdBarra}" />
 
 					<p:outputLabel value="Nome do Produto" for="nome" />
-					<p:inputText id="nome" styleClass="form-control"
+					<p:inputText id="nome"
 						value="#{cadastroProdutoBean.produto.nmProduto}" />
 
 
 					<p:outputLabel value="Peso" for="peso" />
-					<p:inputText id="peso" styleClass="form-control"
+					<p:inputText id="peso" 
 						value="#{cadastroProdutoBean.produto.peso}" />
 
 					<p:outputLabel value="Descrição" for="descricao" />
-					<p:inputTextarea id="descricao" styleClass="form-control"
+					<p:inputTextarea id="descricao" 
 						value="#{cadastroProdutoBean.produto.descricao}" />
 
 				</h:panelGrid>
-				<p:commandButton value="Salvar" styleClass="btn btn-primary"
+				<p:commandButton value="Salvar" 
 					actionListener="#{cadastroProdutoBean.cadastrar}" />
 			</h:form>
 		</p:panel>

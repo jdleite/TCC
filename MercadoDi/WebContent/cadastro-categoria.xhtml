@@ -18,24 +18,48 @@
 				<p:messages autoUpdate="true" />
 				<p:growl autoUpdate="true" />
 				<h:panelGrid columns="2">
+
+
+
 					<p:outputLabel value="Tipo" for="tipo" />
-					<p:inputText id="tipo" styleClass="form-control"
-						value="#{cadastroCategoriaBean.categoria.tipo}" />
+					<p:selectOneMenu value="#{cadastroCategoriaBean.categoria.tipo}"
+						id="tipo">
+						<f:selectItem itemLabel="Selecione" itemValue="Selecione" />
+						<f:selectItem itemLabel="Bebida" itemValue="Bebida" />
+						<f:selectItem itemLabel="Laticínio" itemValue="Laticínio" />
+						<f:selectItem itemLabel="Perecível" itemValue="Perecível" />
+						<f:selectItem itemLabel="Não Perecível" itemValue="Não Perecível" />
+					</p:selectOneMenu>
 
 
-					<p:outputLabel value="Tipo de Embalagem" for="unidade" />
-					<p:inputText id="unidade" styleClass="form-control"
-						value="#{cadastroCategoriaBean.categoria.unidade}" />
+					<p:outputLabel value="Embalagem" for="embalagem" />
+					<p:selectOneMenu value="#{cadastroCategoriaBean.categoria.unidade}"
+						id="embalagem">
+						<f:selectItem itemLabel="Selecione" itemValue="Selecione" />
+						<f:selectItem itemLabel="Lata" itemValue="Lata" />
+						<f:selectItem itemLabel="Garrafa" itemValue="Garrafa" />
+						<f:selectItem itemLabel="Garrafa Pet" itemValue="Garrafa Pet" />
+						<f:selectItem itemLabel="Fardo" itemValue="Fardo" />
+						<f:selectItem itemLabel="Pote" itemValue="Pote" />
+						<f:selectItem itemLabel="Frasco" itemValue="Frasco" />
+						<f:selectItem itemLabel="Pacote" itemValue="Pacote" />
+						<f:selectItem itemLabel="Caixa" itemValue="Caixa" />
+						<f:selectItem itemLabel="Peça" itemValue="Peça" />
+						<f:selectItem itemLabel="Saco" itemValue="Saco" />
+					</p:selectOneMenu>
+
+
+
 
 
 					<p:outputLabel value="Descrição" for="descricao" />
-					<p:inputTextarea id="descricao" styleClass="form-control"
+					<p:inputTextarea id="descricao"
 						value="#{cadastroCategoriaBean.categoria.descricao}" />
 
 
 
 				</h:panelGrid>
-				<p:commandButton value="Salvar" styleClass="btn btn-primary"
+				<p:commandButton value="Salvar"
 					actionListener="#{cadastroCategoriaBean.cadastrar}" />
 			</h:form>
 		</p:panel>
