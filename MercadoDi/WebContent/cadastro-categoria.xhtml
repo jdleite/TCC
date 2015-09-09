@@ -14,8 +14,7 @@
 	<ui:define name="content">
 		<p:panel toggleable="true" toggleOrientation="vertical"
 			header="Cadastro de Categoria">
-			<h:form>
-				<p:messages autoUpdate="true" />
+			<h:form id="tabela" enctype="multipart/form-data">
 				<p:growl autoUpdate="true" />
 				<h:panelGrid columns="2">
 
@@ -60,7 +59,12 @@
 
 				</h:panelGrid>
 				<p:commandButton value="Salvar"
-					actionListener="#{cadastroCategoriaBean.cadastrar}" />
+					actionListener="#{cadastroCategoriaBean.cadastrar}" update="tabela" />
+
+				<p:commandButton type="reset" value="Limpar" />
+				<p:commandButton value="Sair" title="Alterar" action="index" />
+
+
 			</h:form>
 		</p:panel>
 

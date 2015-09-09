@@ -53,11 +53,13 @@ public class Teste {
         forn.setTelefone("20593999");
         
         prod.setFornecedor(forn);
+        prod.setCdBarra(1);
         prod.setCategoria(cat);
         prod.setEstoque(1000);
         prod.setNmProduto("c");
         prod.setDescricao("LAta");
         prod.setPeso("350 ML");
+        prod.setPreco(1.20);
         
         ent.setProduto(prod);
         ent.setQtCompra(100);

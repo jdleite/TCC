@@ -33,11 +33,16 @@
 
 					<p:outputLabel value="Produto:" for="produto" />
 					<p:inputText id="produto" readonly="true"
-						value="#{vendaBean.produto.nmProduto}" />
+						value="#{vendaBean.produto.nmProduto}">
+						
+						</p:inputText>
 
 					<p:outputLabel value="Preço R$" for="preco" />
 					<p:inputText id="preco" readonly="true"
-						value="#{vendaBean.produto.preco}" />
+						value="#{vendaBean.produto.preco}">
+						<f:convertNumber pattern="##,###,###,###.##"  minFractionDigits="2"/>
+						
+						</p:inputText>
 				</p:panel>
 				<p:panel toggleable="false" toggleOrientation="vertical"
 					header="Quantidade">
@@ -45,8 +50,10 @@
 					<p:inputText id="quantidade" value="#{vendaBean.qtd}"  tabindex="3"/>
 
 					<p:outputLabel value="Total R$" for="total" />
-					<p:inputText id="total" value="#{vendaBean.total}" />
-					<p:commandButton value="Somar" update="tabela" tabindex="3"
+					<p:inputText id="total" value="#{vendaBean.total}">
+					<f:convertNumber pattern="##,###,###,###.##"  minFractionDigits="2"/>
+					</p:inputText>
+					<p:commandButton value="Adicionar" update="tabela" tabindex="3"
 						actionListener="#{vendaBean.somar}" />
 						
 

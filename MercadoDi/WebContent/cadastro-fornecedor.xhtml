@@ -27,11 +27,11 @@
 						value="#{cadastroFornecedorBean.fornecedor.endereco}" />
 
 					<p:outputLabel value="Telefone" for="telefone" />
-					<p:inputText id="telefone"
+					<p:inputMask mask="(99)9999-9999" id="telefone" 
 						value="#{cadastroFornecedorBean.fornecedor.telefone}" />
 
 					<p:outputLabel value="Cep" for="cep" />
-					<p:inputText id="cep"
+					<p:inputMask mask="99999-999" id="cep"
 						value="#{cadastroFornecedorBean.fornecedor.cep}" />
 
 					<p:outputLabel value="Numero" for="numero" />
@@ -45,6 +45,10 @@
 
 				<p:commandButton value="Salvar" styleClass="btn btn-primary"
 					actionListener="#{cadastroFornecedorBean.cadastrar}" />
+
+				<p:commandButton type="reset" value="Limpar" />
+				<p:commandButton value="Sair" title="Alterar" action="index" />
+
 			</h:form>
 		</p:panel>
 	</ui:define>

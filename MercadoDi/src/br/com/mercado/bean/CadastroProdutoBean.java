@@ -30,9 +30,10 @@ public class CadastroProdutoBean {
 	private CategoriaDAO daoCat;
 	private int cdCategoria;
 	private int cdFornecedor;
+	private int c;
 	
 	
-
+	
 	@PostConstruct
 	private void init(){
 		dao = new ProdutoDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
@@ -40,6 +41,11 @@ public class CadastroProdutoBean {
 		daoFor = new FornecedorDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
 		categoria = new Categoria();
 		produto = new Produto();
+		
+		
+		
+		
+
 	}
 	
 	
@@ -108,6 +114,16 @@ public class CadastroProdutoBean {
 
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
+	}
+
+
+	public int getC() {
+		return c;
+	}
+
+
+	public void setC(int c) {
+		this.c = c;
 	}
 
 

@@ -17,21 +17,29 @@
 				<f:facet name="header">
                         Lista Entrada
                       </f:facet>
+				<p:column headerText="Produto">
+					<h:outputText value="#{e.produto.nmProduto}">
+					</h:outputText>
+				</p:column>
 				<p:column headerText="Preço da Compra">
-					<h:outputText value="#{e.precoCompra}" />
+					<h:outputText value="#{e.precoCompra}">
+
+						<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+
+					</h:outputText>
 				</p:column>
 				<p:column headerText="Quantidade">
 					<h:outputText value="#{e.qtCompra}" />
 				</p:column>
 				<p:column headerText="Validade">
 					<h:outputText value="#{e.dtValidade.time}">
-				 <f:convertDateTime pattern="dd/MM/yyyy" />
-				 </h:outputText>
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
 				</p:column>
 				<p:column headerText="Compra">
 					<h:outputText value="#{e.dtCompra.time}">
-				 <f:convertDateTime pattern="dd/MM/yyyy" />
-				 </h:outputText>
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
 				</p:column>
 				<p:column>
 					<p:commandButton icon="ui-icon-trash" update="tab" title="Deletar"
