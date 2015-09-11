@@ -1,10 +1,8 @@
 package br.com.mercado.bean;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import br.com.mercado.dao.ProdutoDAO;
 import br.com.mercado.daoImpl.ProdutoDAOImpl;
@@ -26,16 +24,15 @@ public class AlterarProdutoBean {
 	}
 
 	public void alterar() {
-		FacesMessage msg;
+		MensageView m = new MensageView();
 
 		try {
 			dao.update(produto);
-			msg = new FacesMessage("Alterado com Sucesso!");
+			m.info("Alterado com Sucesso!");
 		} catch (DBCommitException e) {
 			e.printStackTrace();
-			msg = new FacesMessage("Erro ao Alterar");
+			m.error("Erro ao Alterar");
 		}
-		FacesContext.getCurrentInstance().addMessage(null, msg);
 
 	}
 

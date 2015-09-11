@@ -13,7 +13,7 @@
 		<p:growl autoUpdate="true" />
 		<h:form>
 			<p:dataTable value="#{listaEntradaBean.lista}" var="e"
-				emptyMessage="Entradas não encontrada" styleClass="table" id="tab">
+				emptyMessage="Entradas não encontrada" styleClass="table" id="tabela">
 				<f:facet name="header">
                         Lista Entrada
                       </f:facet>
@@ -42,10 +42,10 @@
 					</h:outputText>
 				</p:column>
 				<p:column>
-					<p:commandButton icon="ui-icon-trash" update="tab" title="Deletar"
-						action="#{excluirEntradaBean.excluir}">
+					<p:commandButton icon="ui-icon-trash" update="tabela" title="Deletar"
+						action="#{listaEntradaBean.excluir}">
 						<f:setPropertyActionListener value="#{e}"
-							target="#{excluirEntradaBean.entrada}" />
+							target="#{listaEntradaBean.entrada}" />
 					</p:commandButton>
 
 				</p:column>

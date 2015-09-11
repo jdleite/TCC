@@ -3,10 +3,8 @@ package br.com.mercado.bean;
 import java.util.Calendar;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import br.com.mercado.dao.EntradaDao;
 import br.com.mercado.daoImpl.EntradaDAOImpl;
@@ -33,16 +31,15 @@ public class AlterarEntradaBean {
 	
 	
 	public void alterar(){
-		FacesMessage msg;
+		MensageView m = new MensageView();
 		try {
 			dao.update(entrada);
-			msg = new FacesMessage("Atualizado com Sucesso!");
+			m.info("Atualizado com Sucesso!");
 		} catch (DBCommitException e) {
 			e.printStackTrace();
-			msg = new FacesMessage("Erro ao Atualizar");
+			m.error("Erro ao Atualizar");
 			
 		}
-		FacesContext.getCurrentInstance().addMessage(null, msg);
 		
 	}
 	

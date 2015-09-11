@@ -10,7 +10,6 @@
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="content">
 
-		<p:messages autoUpdate="true" />
 		<p:growl autoUpdate="true" />
 		<h:form>
 			<p:dataTable var="c" value="#{listaCategoriaBean.lista}" id="tabela"
@@ -18,32 +17,35 @@
 				<f:facet name="header">
                         Lista Categoria
                       </f:facet>
+
 				<p:column headerText="Tipo">
-					<h:outputText value="#{c.tipo}" />
-				</p:column>
-
+		    		#{c.tipo}
+		    	</p:column>
 				<p:column headerText="Unidade">
-					<h:outputText value="#{c.unidade}" />
-				</p:column>
-
+		    		#{c.unidade}
+		    	</p:column>
 				<p:column headerText="Descrição">
-					<h:outputText value="#{c.descricao}" />
-				</p:column>
-				<div id="efeito">
-					<p:column>
+		    		#{c.descricao}
+		    	</p:column>
 
-						<p:commandButton icon="ui-icon-pencil" action="alterar-categoria"
-							title="Alterar">
-							<f:setPropertyActionListener value="#{c}"
-								target="#{alterarCategoriaBean.categoria}" />
-						</p:commandButton>
-						<p:commandButton icon="ui-icon-trash" update="tabela"
-							title="Deletar" action="#{excluirCategoriaBean.excluir}">
-							<f:setPropertyActionListener value="#{c}"
-								target="#{excluirCategoriaBean.categoria}" />
-						</p:commandButton>
-					</p:column>
-				</div>
+
+				<p:column>
+
+					<p:commandButton icon="ui-icon-pencil" action="alterar-categoria"
+						title="Alterar">
+						<f:setPropertyActionListener value="#{c}"
+							target="#{alterarCategoriaBean.categoria}" />
+					</p:commandButton>
+					
+					
+					
+					<p:commandButton icon="ui-icon-trash" update="tabela"
+						title="Deletar" action="#{listaCategoriaBean.excluir}">
+						<f:setPropertyActionListener value="#{c}"
+							target="#{listaCategoriaBean.categoria}" />
+					</p:commandButton>
+				</p:column>
+
 
 
 			</p:dataTable>

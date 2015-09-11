@@ -56,7 +56,7 @@ public class Teste {
         prod.setCdBarra(1);
         prod.setCategoria(cat);
         prod.setEstoque(1000);
-        prod.setNmProduto("c");
+        prod.setNmProduto("coca-cola");
         prod.setDescricao("LAta");
         prod.setPeso("350 ML");
         prod.setPreco(1.20);

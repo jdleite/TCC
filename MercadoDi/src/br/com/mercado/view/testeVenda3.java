@@ -32,9 +32,14 @@ public class testeVenda3 {
 		List<ItemVenda> itens = new ArrayList<ItemVenda>();
 		ItemDAO iDao = new ItemDAOImpl(em);
 
-	 
-	  pDao.alterarPreco(2, 52);
-	  eDao.somar(2, 356);
+	
+		boolean a = pDao.encotrarCodigoBarra(1);
+		
+		if(a == true){
+			System.out.println("aaaaaaaaa");
+		}else{
+			System.out.println("bbbbbbbbbbbb");
+		}
 
 	}
 

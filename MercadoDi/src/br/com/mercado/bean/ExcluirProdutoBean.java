@@ -43,7 +43,6 @@ public class ExcluirProdutoBean {
 		try {
 			lista.remove(produto);
 			eDao.deletar(produto.getCdProduto());
-
 			dao.delete(produto.getCdProduto());
 
 			msg = new FacesMessage("Excluido com Sucesso!");

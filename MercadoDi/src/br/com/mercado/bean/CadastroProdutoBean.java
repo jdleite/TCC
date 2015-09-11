@@ -21,7 +21,7 @@ import br.com.mercado.singleton.EMFactorySingleton;
 @ManagedBean
 @RequestScoped
 public class CadastroProdutoBean {
-	
+
 	private Produto produto;
 	private Categoria categoria;
 	private Fornecedor fornecedor;
@@ -31,42 +31,62 @@ public class CadastroProdutoBean {
 	private int cdCategoria;
 	private int cdFornecedor;
 	private int c;
-	
-	
-	
+
 	@PostConstruct
-	private void init(){
-		dao = new ProdutoDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
-		daoCat = new CategoriaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
-		daoFor = new FornecedorDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+	private void init() {
+		dao = new ProdutoDAOImpl(EMFactorySingleton.getInstance()
+				.createEntityManager());
+		daoCat = new CategoriaDAOImpl(EMFactorySingleton.getInstance()
+				.createEntityManager());
+		daoFor = new FornecedorDAOImpl(EMFactorySingleton.getInstance()
+				.createEntityManager());
 		categoria = new Categoria();
 		produto = new Produto();
 		
-		
-		
+
 		
 
 	}
-	
-	
-	public void cadastrar(){
-		FacesMessage msg;
+
+	public void cadastrar() {
+		MensageView m = new MensageView();
+		
+		boolean a = dao.encotrarCodigoBarra(produto.getCdBarra());
+		if(a == false){
 		try {
 			categoria = daoCat.findById(cdCategoria);
 			fornecedor = daoFor.findById(cdFornecedor);
 			produto.setFornecedor(fornecedor);
 			produto.setCategoria(categoria);
-			dao.insert(produto);			
-			msg  = new FacesMessage("Cadastrado com Sucesso!");
-		} catch (DBCommitException e) {			
+			dao.insert(produto);
+			m.info("Cadastrado com Sucesso");
+		} catch (DBCommitException e) {
 			e.printStackTrace();
-			msg  = new FacesMessage("Cadastrado com Sucesso!");
+			m.error("Erro ao Cadastrar!");
 		}
+		}else{
+			
+			m.error("Código de Barra já Cadastrado");
+		}
+	
+	}
+
+	public void encontrarCodigoBarra() {
+		FacesMessage msg;
+
+		boolean a = dao.encotrarCodigoBarra(produto.getCdBarra());
+
+		if (a == false) {
+
+			msg = new FacesMessage("Códido de Barra Não Cadastrado!");
+
+		} else {
+			msg = new FacesMessage("Código de Barra Já Cadastrado!");
+		}
+
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
-	
-	
-	
+
 	public Produto getProduto() {
 		return produto;
 	}
@@ -83,52 +103,37 @@ public class CadastroProdutoBean {
 		this.categoria = categoria;
 	}
 
-
-	
-
-
 	public int getCdCategoria() {
 		return cdCategoria;
 	}
-
 
 	public void setCdCategoria(int cdCategoria) {
 		this.cdCategoria = cdCategoria;
 	}
 
-
 	public int getCdFornecedor() {
 		return cdFornecedor;
 	}
-
 
 	public void setCdFornecedor(int cdFornecedor) {
 		this.cdFornecedor = cdFornecedor;
 	}
 
-
 	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}
-
 
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}
 
-
 	public int getC() {
 		return c;
 	}
 
-
 	public void setC(int c) {
 		this.c = c;
 	}
-
-
-	
-
 
 	
 	

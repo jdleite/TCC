@@ -3,10 +3,8 @@ package br.com.mercado.bean;
 import java.util.Calendar;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import br.com.mercado.dao.EntradaDao;
 import br.com.mercado.dao.ProdutoDAO;
@@ -38,12 +36,13 @@ public class CadastroEntradaBean {
 		entrada = new Entrada();
 		entrada.setDtCompra(Calendar.getInstance());
 		entrada.setDtValidade(Calendar.getInstance());
+		produto = new Produto();
 		
 
 	}
 
 	public void cadastrar() {
-		FacesMessage msg;
+		MensageView m = new MensageView();
 		try {
 
 		    daoProd.alterarPreco(cdProduto,entrada.getPrecoVenda());
@@ -51,14 +50,13 @@ public class CadastroEntradaBean {
 			entrada.setProduto(produto);
 			dao.insert(entrada);
 			dao.somar(cdProduto, entrada.getQtCompra());
-			msg = new FacesMessage("Cadastrado com Sucesso!");
+			m.info("Cadastrado com Sucesso!");
 		} catch (DBCommitException e) {
 			e.printStackTrace();
 
-			msg = new FacesMessage("Cadastrado com Sucesso!");
+			m.error("Cadastrado com Sucesso!");
 		}
 
-		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 	public int getId() {

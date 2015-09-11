@@ -25,6 +25,8 @@ public class VendaDAOImpl extends DaoImpl<Venda, Integer> implements VendaDAO {
 
 		em.getTransaction().commit();		
 		
+		
+		
 	}
 
 	@Override

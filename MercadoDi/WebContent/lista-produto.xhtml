@@ -10,38 +10,43 @@
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="content">
 		<p:growl autoUpdate="true" />
-		<h:form enctype="multipart/form-data">
+		<h:form>
+			<h:panelGrid columns="3">
+				<p:outputLabel value="Nome" for="busca" />
+				<p:autoComplete id="busca" value="#{listaProdutoBean.nomeBusca}"
+					completeMethod="#{listaProdutoBean.completarNome}" />
+				<p:commandButton value="Buscar"
+					actionListener="#{listaProdutoBean.buscar}" update="tabela" />
+			</h:panelGrid>
 			<p:dataTable value="#{listaProdutoBean.lista}" id="tabela" var="p"
 				emptyMessage="Produtos não encontrado">
-				<f:facet name="header">
-                        Lista Produto
-                      </f:facet>
+
 				<p:column headerText="Nome do Produto">
-					<h:outputText value="#{p.nmProduto}" />
-				</p:column>
+						#{p.nmProduto}
+					</p:column>
 				<p:column headerText="Quantidade">
-					<h:outputText value="#{p.estoque}" />
-				</p:column>
+						#{p.estoque}
+					</p:column>
 				<p:column headerText="Preço">
-					<h:outputText value="#{p.preco}">					
-					<f:convertNumber pattern="##,###,###,###.##"  minFractionDigits="2"/>
-					</h:outputText>
-				</p:column>
+						#{p.preco}
+					</p:column>
 				<p:column headerText="Tipo de Categoria">
-					<h:outputText value="#{p.categoria.tipo}" />
-				</p:column>
+						#{p.categoria.tipo}
+					</p:column>
 				<p:column headerText="Tipo de Unidade">
-					<h:outputText value="#{p.categoria.unidade}" />
-				</p:column>
+						#{p.categoria.unidade}
+					</p:column>
+
 				<p:column headerText="Peso">
-					<h:outputText value="#{p.peso}" />
-				</p:column>
-				<p:column headerText="Codigo de Barra">
-					<h:outputText value="#{p.cdBarra}" />
-				</p:column>
+						#{p.peso}
+					</p:column>
+				<p:column headerText="Código de Barra">
+						#{p.cdBarra}
+					</p:column>
 				<p:column headerText="Descrição">
-					<h:outputText value="#{p.descricao}" />
-				</p:column>
+						#{p.descricao}
+					</p:column>
+
 				<p:column>
 
 					<p:commandButton icon="ui-icon-pencil" action="alterar-produto">
@@ -49,9 +54,9 @@
 							target="#{alterarProdutoBean.produto}" />
 					</p:commandButton>
 					<p:commandButton icon="ui-icon-trash" update="tabela"
-						title="Deletar" action="#{excluirProdutoBean.excluir}">
+						title="Deletar" action="#{listaProdutoBean.excluir}">
 						<f:setPropertyActionListener value="#{p}"
-							target="#{excluirProdutoBean.produto}" />
+							target="#{listaProdutoBean.produto}" />
 					</p:commandButton>
 					<p:commandButton icon="ui-icon-search" onclick="PF('fun').show()">
 						<f:setPropertyActionListener value="#{p}"
@@ -60,16 +65,7 @@
 				</p:column>
 
 			</p:dataTable>
-			<p:dialog header="Detalhes" showEffect="bounce" id="di"
-				hideEffect="explode" modal="true" widgetVar="fun">
-				<h:panelGrid columns="2">
-					<h:outputLabel value="Nome:" />
-					<h:outputText value="#{cadastroProdutoBean.produto.nmProduto}" />					
-					
-					
-					<p:commandButton value="OK" onclick="PF('fun').hide()" />
-				</h:panelGrid>
-			</p:dialog>
+
 		</h:form>
 
 	</ui:define>

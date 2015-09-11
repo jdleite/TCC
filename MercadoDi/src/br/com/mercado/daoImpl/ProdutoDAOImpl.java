@@ -39,6 +39,32 @@ public class ProdutoDAOImpl extends DaoImpl<Produto, Integer> implements Produto
 		
 	}
 
+	@Override
+	public List<Produto> buscarNomeProduto(String nome) {
+		return em.createQuery("from Produto p where "
+				+ "upper(p.nmProduto) like upper(:n)",Produto.class)
+				.setParameter("n","%"+nome+"%").getResultList();
+	}
+
+	@Override
+	public List<String> autoCompletePorNome(String nome) {
+		return em.createQuery("select p.nmProduto from Produto p where "
+				+ "upper(p.nmProduto) like upper(:n)",String.class)
+				.setParameter("n","%"+nome+"%").getResultList();
+	}
+
+	@Override
+	public boolean encotrarCodigoBarra(int cd) {
+		try {
+			em.createQuery("from Produto p where  p.cdBarra = :cd")
+			.setParameter("cd", cd).getSingleResult();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
+
 	
 			
 }

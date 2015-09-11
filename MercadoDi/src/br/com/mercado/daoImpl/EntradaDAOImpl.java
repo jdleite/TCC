@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.mercado.dao.EntradaDao;
 import br.com.mercado.entity.Entrada;
+import br.com.mercado.entity.Produto;
 
 public class EntradaDAOImpl extends DaoImpl<Entrada, Integer> implements
 		EntradaDao {
@@ -31,6 +32,10 @@ public class EntradaDAOImpl extends DaoImpl<Entrada, Integer> implements
 				.executeUpdate();
 
 		em.getTransaction().commit();
+		
+		/*em.createQuery("update Produto set estoque = estoque + :quantidade where cdProduto = :id")
+		.setParameter("quantidade", quantidade)
+		.setParameter("id", id).executeUpdate();*/
 		
 	}
 

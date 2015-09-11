@@ -14,15 +14,14 @@
 	<ui:define name="content">
 		<p:panel toggleable="true" toggleOrientation="vertical"
 			header="Cadastro de Produtos">
-			<h:form>
-				<p:messages autoUpdate="true" />
+			<h:form id="tabela" enctype="multipart/form-data">
 				<p:growl autoUpdate="true" />
 				<h:panelGrid columns="1">
 					<p:panel toggleable="true" toggleOrientation="vertical"
 						header="Selecionar">
 						<p:outputLabel value="Categoria" for="categoria" />
-						<p:inputText id="categoria" readonly="true"
-							value="#{cadastroProdutoBean.cdCategoria}" />
+						<p:inputMask id="categoria" mask="9?999999999999999"
+							placeHolder="" value="#{cadastroProdutoBean.cdCategoria}" />
 						<p:commandButton icon="ui-icon-search"
 							action="lista-nome-categoria" />
 
@@ -39,8 +38,12 @@
 				</h:panelGrid>
 				<h:panelGrid columns="4">
 					<p:outputLabel value="Codigo de Barra" for="barra" />
-					<p:inputText id="barra"
+					<p:inputText id="barra" 
 						value="#{cadastroProdutoBean.produto.cdBarra}" />
+					
+
+
+
 
 					<p:outputLabel value="Nome do Produto" for="nome" />
 					<p:inputText id="nome"
@@ -55,7 +58,7 @@
 						value="#{cadastroProdutoBean.produto.descricao}" />
 
 				</h:panelGrid>
-				<p:commandButton value="Salvar"
+				<p:commandButton value="Salvar" update="tabela"
 					actionListener="#{cadastroProdutoBean.cadastrar}" />
 				<p:commandButton type="reset" value="Limpar" />
 				<p:commandButton value="Sair" title="Alterar" action="index" />

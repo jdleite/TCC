@@ -27,11 +27,13 @@ public class ExcluirCategoriaBean {
 	private void init(){
 		dao = new CategoriaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
 		lista = dao.listarCategoria();
+		categoria = new Categoria();
 	}
 	
 	public void excluir(){
 		FacesMessage msg = null;
 		try {
+			
 			lista.remove(categoria);
 			dao.delete(categoria.getCdCategoria());		
 			
