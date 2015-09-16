@@ -11,9 +11,9 @@ import org.primefaces.component.datatable.DataTable;
 import br.com.mercado.dao.ItemDAO;
 import br.com.mercado.dao.ProdutoDAO;
 import br.com.mercado.dao.VendaDAO;
-import br.com.mercado.daoImpl.ItemDAOImpl;
-import br.com.mercado.daoImpl.ProdutoDAOImpl;
-import br.com.mercado.daoImpl.VendaDAOImpl;
+import br.com.mercado.daoImpl.ItemDaoImpl;
+import br.com.mercado.daoImpl.ProdutoDaoImpl;
+import br.com.mercado.daoImpl.VendaDaoImpl;
 import br.com.mercado.entity.ItemVenda;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.entity.Venda;
@@ -27,13 +27,13 @@ public class TesteVenda {
 				.createEntityManager();
 
 		Venda v = new Venda();
-		VendaDAO vDao = new VendaDAOImpl(em);
+		VendaDAO vDao = new VendaDaoImpl(em);
 		Produto prod = new Produto();
-		ProdutoDAO pDao = new ProdutoDAOImpl(em);
+		ProdutoDAO pDao = new ProdutoDaoImpl(em);
 		ItemVenda item = new ItemVenda();
 		ItemVenda item2 = new ItemVenda();
 		List<ItemVenda> itens = new ArrayList<ItemVenda>();
-		ItemDAO iDao = new ItemDAOImpl(em);
+		ItemDAO iDao = new ItemDaoImpl(em);
 		
 		Produto prI = pDao.findById(1);
 
@@ -42,19 +42,14 @@ public class TesteVenda {
 		item.setProduto(prI);
 		item2.setPrecoItem(30);
 		item2.setProduto(prI);
-		item2.setQtItem(50);
-		
+		item2.setQtItem(10);
 		itens.add(item);
 		itens.add(item2);
-		
+
+		item.setVenda(v);
+		item2.setVenda(v);
 	
-		for(ItemVenda i: itens){
-			preco += i.getPrecoItem();
-			
-			
-		}
-		System.out.println(preco);
-		v.setTotal(preco);
+		v.setTotal((item2.getPrecoItem()* item2.getQtItem())+(item.getPrecoItem() * item.getQtItem()));
 		v.setItensVenda(itens);
 		for(ItemVenda i: itens){
 		vDao.baixaEstoque(i.getProduto().getCdProduto(),i.getQtItem());

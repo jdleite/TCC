@@ -6,8 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.com.mercado.dao.EntradaDao;
-import br.com.mercado.daoImpl.EntradaDAOImpl;
+import br.com.mercado.dao.EntradaDAO;
+import br.com.mercado.daoImpl.EntradaDaoImpl;
 import br.com.mercado.entity.Entrada;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.exception.IdNotFoundException;
@@ -18,12 +18,13 @@ import br.com.mercado.singleton.EMFactorySingleton;
 public class ListaEntradaBean {
 	private List<Entrada> lista;
     private Entrada entrada;
-	private EntradaDao dao;
+	private EntradaDAO dao;
+	private int cdBarra;
 	
 	
 	@PostConstruct
 	public void init(){
-		dao = new EntradaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+		dao = new EntradaDaoImpl(EMFactorySingleton.getInstance().createEntityManager());
 		entrada  = new Entrada();
 		lista = dao.listarEntrada();
 	}
@@ -44,7 +45,10 @@ public class ListaEntradaBean {
 		}
 		
 	}
-
+	
+	public void buscar(){
+		lista = dao.buscarEntrada(dao.buscaCodigo(cdBarra));
+	}
 	public List<Entrada> getLista() {
 		return lista;
 	}
@@ -59,6 +63,14 @@ public class ListaEntradaBean {
 
 	public void setEntrada(Entrada entrada) {
 		this.entrada = entrada;
+	}
+
+	public int getCdBarra() {
+		return cdBarra;
+	}
+
+	public void setCdBarra(int cdBarra) {
+		this.cdBarra = cdBarra;
 	}
 
 	

@@ -19,20 +19,20 @@
 				<p:growl autoUpdate="true" />
 				<h:panelGrid columns="3">
 					<p:outputLabel value="Produto" for="codigo" />
-					<p:inputMask id="codigo" mask="9?999999999999999" placeHolder=""
+					<p:inputMask id="codigo" mask="9?9999999" placeHolder=""
 						value="#{cadastroEntradaBean.cdProduto}" />
 
 					<p:commandButton icon="ui-icon-search" action="lista-nome-produto" />
 				</h:panelGrid>
 				<h:panelGrid columns="2">
-					<p:outputLabel value="Preço da compra" for="preco" />
-					<p:inputText id="preco"
+					<p:outputLabel value="Preço da compra R$" for="preco" />
+					<p:inputText id="preco" 
 						value="#{cadastroEntradaBean.entrada.precoCompra}">
 
 						<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
 					</p:inputText>
 
-					<p:outputLabel value="Preço da venda" for="venda" />
+					<p:outputLabel value="Preço da venda R$" for="venda" />
 					<p:inputText id="venda"
 						value="#{cadastroEntradaBean.entrada.precoVenda}">
 
@@ -45,7 +45,7 @@
 						value="#{cadastroEntradaBean.entrada.qtCompra}" />
 
 
-					<p:outputLabel value="Data Validade" for="validade" />
+					<p:outputLabel value="Data Validade do Produto" for="validade" />
 					<p:inputText id="validade"
 						value="#{cadastroEntradaBean.entrada.dtValidade.time}">
 						<f:convertDateTime pattern="dd/MM/yyyy"
@@ -55,12 +55,11 @@
 
 
 
-					<p:outputLabel value="Data da compra" for="dataCompra" />
-					<p:inputText id="dataCompra"
+					<h:inputHidden id="dataCompra"
 						value="#{cadastroEntradaBean.entrada.dtCompra.time}">
 						<f:convertDateTime pattern="dd/MM/yyyy"
 							timeZone="America/Sao_Paulo" />
-					</p:inputText>
+					</h:inputHidden>
 				</h:panelGrid>
 				<p:commandButton value="Salvar"
 					actionListener="#{cadastroEntradaBean.cadastrar}" />

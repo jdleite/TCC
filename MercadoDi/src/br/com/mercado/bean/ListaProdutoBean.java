@@ -6,10 +6,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.dao.EntradaDAO;
 import br.com.mercado.dao.ProdutoDAO;
-import br.com.mercado.daoImpl.EntradaDAOImpl;
-import br.com.mercado.daoImpl.ProdutoDAOImpl;
+import br.com.mercado.daoImpl.EntradaDaoImpl;
+import br.com.mercado.daoImpl.ProdutoDaoImpl;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.exception.IdNotFoundException;
@@ -24,13 +24,13 @@ public class ListaProdutoBean {
 	public ProdutoDAO dao;
 	private String nomeBusca;
 	private Produto produto;
-	private EntradaDao eDao;
+	private EntradaDAO eDao;
 
 	@PostConstruct
 	public void init() {
-		dao = new ProdutoDAOImpl(EMFactorySingleton.getInstance()
+		dao = new ProdutoDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
-		eDao = new EntradaDAOImpl(EMFactorySingleton.getInstance()
+		eDao = new EntradaDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
 
 	  produto = new Produto();
@@ -62,7 +62,9 @@ public class ListaProdutoBean {
 	
 	
 	public List<String> completarNome(String nome){
+         
 		return dao.autoCompletePorNome(nome);
+
 	}
 
 	public List<Produto> getLista() {

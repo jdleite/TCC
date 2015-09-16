@@ -7,8 +7,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import br.com.mercado.dao.VendaDAO;
-import br.com.mercado.daoImpl.VendaDAOImpl;
+import br.com.mercado.daoImpl.ProdutoDaoImpl;
+import br.com.mercado.daoImpl.VendaDaoImpl;
+import br.com.mercado.entity.ItemVenda;
 import br.com.mercado.entity.Produto;
+import br.com.mercado.entity.Venda;
 import br.com.mercado.singleton.EMFactorySingleton;
 
 @ManagedBean
@@ -16,16 +19,17 @@ import br.com.mercado.singleton.EMFactorySingleton;
 public class VendaBean {
 	private Produto produto;
 	private List<Produto> lista;
-	private List<Produto> produtos;
+	private List<ItemVenda> i;
+	private ItemVenda iVenda;
+	private Venda venda;
 	public VendaDAO vDao;
 	private int cd;
 	private int qtd;
-
 	private double total;
 
 	@PostConstruct
 	private void init() {
-		vDao = new VendaDAOImpl(EMFactorySingleton.getInstance()
+		vDao = new VendaDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
 		produto = new Produto();
 	}
@@ -33,7 +37,12 @@ public class VendaBean {
 	public void somar() {
 		buscar();
 		total += (qtd * produto.getPreco());
-
+		
+	    iVenda.setQtItem(qtd);
+	    
+	    
+	    
+		
 		qtd = 0;
 		cd = 0;
 		produto.setNmProduto(null);
@@ -41,18 +50,27 @@ public class VendaBean {
 
 		
 	}
+	
+	
 
 	public void buscar() {
-
+		
+		
+		
 		lista = vDao.nomePreco(cd);
-
 		for (Produto p : lista) {
 			produto.setNmProduto(p.getNmProduto());
 			produto.setPreco(p.getPreco());
 			
-			
-
 		}
+		
+		
+		
+
+		
+		
+		
+
 	}
 
 	public int getCd() {
@@ -95,12 +113,34 @@ public class VendaBean {
 		this.qtd = qtd;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
+	
+	
+	public void setiVenda(ItemVenda iVenda) {
+		this.iVenda = iVenda;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public ItemVenda getiVenda() {
+		return iVenda;
 	}
+
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public void setVenda(Venda venda) {
+		this.venda = venda;
+	}
+
+	public List<ItemVenda> getI() {
+		return i;
+	}
+
+	public void setI(List<ItemVenda> i) {
+		this.i = i;
+	}
+	
+	
+	
+   
 
 }

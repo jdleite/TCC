@@ -12,6 +12,12 @@
 		<p:messages autoUpdate="true" />
 		<p:growl autoUpdate="true" />
 		<h:form>
+		<h:panelGrid columns="3">
+				<p:outputLabel value="Código de Barra" for="busca" />
+				<p:inputText id="busca" value="#{listaEntradaBean.cdBarra}" />
+				<p:commandButton value="Buscar"
+					actionListener="#{listaEntradaBean.buscar}" update="tabela" />
+			</h:panelGrid>
 			<p:dataTable value="#{listaEntradaBean.lista}" var="e"
 				emptyMessage="Entradas não encontrada" styleClass="table" id="tabela">
 				<f:facet name="header">
@@ -22,11 +28,13 @@
 					</h:outputText>
 				</p:column>
 				<p:column headerText="Preço da Compra">
+					<p:column headerText="Preço">
 					<h:outputText value="#{e.precoCompra}">
-
-						<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+					
+						<f:convertNumber currencySymbol="R$" pattern="#0.000" minFractionDigits="2" />
 
 					</h:outputText>
+				</p:column>
 				</p:column>
 				<p:column headerText="Quantidade">
 					<h:outputText value="#{e.qtCompra}" />

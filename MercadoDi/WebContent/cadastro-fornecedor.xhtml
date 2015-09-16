@@ -19,27 +19,33 @@
 				<p:growl autoUpdate="true" />
 				<h:panelGrid columns="2">
 					<p:outputLabel value="Nome" for="nome" />
-					<p:inputText id="nome"
+					<p:inputText id="nome" required="true"
+						requiredMessage="Nome é Obrigatorio"
 						value="#{cadastroFornecedorBean.fornecedor.nome}" />
 
 					<p:outputLabel value="Endereço" for="endereco" />
-					<p:inputText id="endereco"
+					<p:inputText id="endereco" required="true"
+						requiredMessage="Endereço é Obrigatorio"
 						value="#{cadastroFornecedorBean.fornecedor.endereco}" />
 
 					<p:outputLabel value="Telefone" for="telefone" />
-					<p:inputMask mask="(99)9999-9999" id="telefone" 
+					<p:inputMask mask="(99)9999-9999" id="telefone" required="true"
+						requiredMessage="Telefone é Obrigatorio"
 						value="#{cadastroFornecedorBean.fornecedor.telefone}" />
 
 					<p:outputLabel value="Cep" for="cep" />
-					<p:inputMask mask="99999-999" id="cep"
+					<p:inputMask mask="99999-999" id="cep" required="true"
+						requiredMessage="Cep é Obrigatorio"
 						value="#{cadastroFornecedorBean.fornecedor.cep}" />
 
 					<p:outputLabel value="Numero" for="numero" />
-					<p:inputText id="numero"
+					<p:inputText id="numero" required="true"
+						requiredMessage="Numero é Obrigatorio"
 						value="#{cadastroFornecedorBean.fornecedor.numero}" />
 
 					<p:outputLabel value="Bairro" for="bairro" />
-					<p:inputText id="bairro"
+					<p:inputText id="bairro" required="true"
+						requiredMessage="Bairro é Obrigatorio"
 						value="#{cadastroFornecedorBean.fornecedor.bairro}" />
 				</h:panelGrid>
 

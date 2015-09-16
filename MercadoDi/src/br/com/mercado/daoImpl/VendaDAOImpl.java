@@ -6,12 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import br.com.mercado.dao.VendaDAO;
+import br.com.mercado.entity.ItemVenda;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.entity.Venda;
 
-public class VendaDAOImpl extends DaoImpl<Venda, Integer> implements VendaDAO {
+public class VendaDaoImpl extends DaoImpl<Venda, Integer> implements VendaDAO {
 
-	public VendaDAOImpl(EntityManager em) {
+	public VendaDaoImpl(EntityManager em) {
 		super(em);
 	}
 
@@ -37,6 +38,13 @@ public class VendaDAOImpl extends DaoImpl<Venda, Integer> implements VendaDAO {
 			return query.getResultList();
 	}
 
+	
+
+	
+
+
+
+	
 
 	
 	

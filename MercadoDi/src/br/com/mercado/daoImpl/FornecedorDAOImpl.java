@@ -8,10 +8,10 @@ import javax.persistence.TypedQuery;
 import br.com.mercado.dao.FornecedorDAO;
 import br.com.mercado.entity.Fornecedor;
 
-public class FornecedorDAOImpl extends DaoImpl<Fornecedor, Integer> implements
+public class FornecedorDaoImpl extends DaoImpl<Fornecedor, Integer> implements
 		FornecedorDAO {
 
-	public FornecedorDAOImpl(EntityManager em) {
+	public FornecedorDaoImpl(EntityManager em) {
 		super(em);
 	}
 

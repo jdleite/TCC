@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 
-import br.com.mercado.daoImpl.CategoriaDAOImpl;
+import br.com.mercado.daoImpl.CategoriaDaoImpl;
 import br.com.mercado.entity.Categoria;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.singleton.EMFactorySingleton;
@@ -14,7 +14,7 @@ import br.com.mercado.singleton.EMFactorySingleton;
 @RequestScoped
 public class CadastroCategoriaBean {
 
-	private CategoriaDAOImpl dao;
+	private CategoriaDaoImpl dao;
 	
 	private Categoria categoria;
 	
@@ -24,7 +24,7 @@ public class CadastroCategoriaBean {
 	private void init(){
 		EntityManager em = EMFactorySingleton
 				.getInstance().createEntityManager();
-		dao = new CategoriaDAOImpl(em);
+		dao = new CategoriaDaoImpl(em);
 		categoria = new Categoria();
 	}
 	

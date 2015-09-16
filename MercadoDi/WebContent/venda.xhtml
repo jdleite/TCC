@@ -62,13 +62,19 @@
 
 				<p:panel toggleable="false" toggleOrientation="vertical"
 					header="Produto">
-					<p:dataTable value="#{vendaBean.produtos}" id="tabela" var="p"
+					<p:dataTable value="#{vendaBean.lista}" id="tabela" var="p"
 						emptyMessage="Produtos não encontrado">
 						<f:facet name="header">
                         Lista Produto
                       </f:facet>
 						<p:column headerText="Nome do Produto">
 							<h:outputText value="#{p.nmProduto}" />
+						</p:column>
+						<p:column headerText="Quantidade">
+							<h:outputText value="#{p.descricao}" />
+						</p:column>
+						<p:column headerText="Total do Item">
+							<h:outputText value="#{p.descricao}" />
 						</p:column>
 
 					</p:dataTable>

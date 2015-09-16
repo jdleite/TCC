@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import br.com.mercado.dao.CategoriaDAO;
-import br.com.mercado.daoImpl.CategoriaDAOImpl;
+import br.com.mercado.daoImpl.CategoriaDaoImpl;
 import br.com.mercado.entity.Categoria;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.singleton.EMFactorySingleton;
@@ -21,7 +21,7 @@ public class AlterarCategoriaBean {
 	@PostConstruct
 	private void init() {
 		categoria = new Categoria();
-		dao = new CategoriaDAOImpl(EMFactorySingleton.getInstance()
+		dao = new CategoriaDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
 
 		

@@ -5,13 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import br.com.mercado.dao.CategoriaDAO;
-import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.dao.EntradaDAO;
 import br.com.mercado.dao.FornecedorDAO;
 import br.com.mercado.dao.ProdutoDAO;
-import br.com.mercado.daoImpl.CategoriaDAOImpl;
-import br.com.mercado.daoImpl.EntradaDAOImpl;
-import br.com.mercado.daoImpl.FornecedorDAOImpl;
-import br.com.mercado.daoImpl.ProdutoDAOImpl;
+import br.com.mercado.daoImpl.CategoriaDaoImpl;
+import br.com.mercado.daoImpl.EntradaDaoImpl;
+import br.com.mercado.daoImpl.FornecedorDaoImpl;
+import br.com.mercado.daoImpl.ProdutoDaoImpl;
 import br.com.mercado.entity.Categoria;
 import br.com.mercado.entity.Entrada;
 import br.com.mercado.entity.Fornecedor;
@@ -28,13 +28,13 @@ public class Teste {
 
 
 	    Produto prod = new Produto();
-	    ProdutoDAO pDao = new ProdutoDAOImpl(em);
+	    ProdutoDAO pDao = new ProdutoDaoImpl(em);
 	    Categoria cat = new Categoria();
-	    CategoriaDAO cDao = new CategoriaDAOImpl(em);
+	    CategoriaDAO cDao = new CategoriaDaoImpl(em);
 	    Fornecedor forn = new Fornecedor();
-        FornecedorDAO fDao = new FornecedorDAOImpl(em);
+        FornecedorDAO fDao = new FornecedorDaoImpl(em);
         Entrada ent = new Entrada();
-        EntradaDao eDao = new EntradaDAOImpl(em);
+        EntradaDAO eDao = new EntradaDaoImpl(em);
         
         
        
@@ -56,7 +56,7 @@ public class Teste {
         prod.setCdBarra(1);
         prod.setCategoria(cat);
         prod.setEstoque(1000);
-        prod.setNmProduto("coca-cola");
+        prod.setNmProduto("fanta");
         prod.setDescricao("LAta");
         prod.setPeso("350 ML");
         prod.setPreco(1.20);

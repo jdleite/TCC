@@ -5,14 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.dao.EntradaDAO;
 import br.com.mercado.entity.Entrada;
-import br.com.mercado.entity.Produto;
 
-public class EntradaDAOImpl extends DaoImpl<Entrada, Integer> implements
-		EntradaDao {
+public class EntradaDaoImpl extends DaoImpl<Entrada, Integer> implements
+		EntradaDAO {
 
-	public EntradaDAOImpl(EntityManager em) {
+	public EntradaDaoImpl(EntityManager em) {
 		super(em);
 
 	}
@@ -35,8 +34,8 @@ public class EntradaDAOImpl extends DaoImpl<Entrada, Integer> implements
 		
 		/*em.createQuery("update Produto set estoque = estoque + :quantidade where cdProduto = :id")
 		.setParameter("quantidade", quantidade)
-		.setParameter("id", id).executeUpdate();*/
-		
+		.setParameter("id", id).executeUpdate();
+		*/
 	}
 
 	@Override
@@ -59,6 +58,24 @@ public class EntradaDAOImpl extends DaoImpl<Entrada, Integer> implements
 		em.getTransaction().commit();
 		
 	}
+
+	@Override
+	public int buscaCodigo(int barra) {
+		return em.createQuery("select p.cdProduto from Produto p where "
+				+ "p.cdBarra like :n",Integer.class)
+				.setParameter("n",barra).getSingleResult();
+	}
+
+
+	@Override
+	public List<Entrada> buscarEntrada(int barra) {
+		return em.createQuery(" from Entrada p where "
+				+ "p.produto.cdProduto like :n",Entrada.class)
+				.setParameter("n",barra).getResultList();
+	}
+
+	
+
 	
 	
 

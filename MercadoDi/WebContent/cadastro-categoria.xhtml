@@ -52,7 +52,8 @@
 
 
 					<p:outputLabel value="Descrição" for="descricao" />
-					<p:inputTextarea id="descricao"
+					<p:inputTextarea id="descricao" required="true"
+						requiredMessage="Descrição é Obrigatorio"
 						value="#{cadastroCategoriaBean.categoria.descricao}" />
 
 

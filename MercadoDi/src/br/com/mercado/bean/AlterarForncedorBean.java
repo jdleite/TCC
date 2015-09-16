@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import br.com.mercado.dao.FornecedorDAO;
-import br.com.mercado.daoImpl.FornecedorDAOImpl;
+import br.com.mercado.daoImpl.FornecedorDaoImpl;
 import br.com.mercado.entity.Fornecedor;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.singleton.EMFactorySingleton;
@@ -19,7 +19,7 @@ public class AlterarForncedorBean {
 	
 	@PostConstruct
 	private void init(){
-		dao = new FornecedorDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+		dao = new FornecedorDaoImpl(EMFactorySingleton.getInstance().createEntityManager());
 		
 		fornecedor = new Fornecedor();
 		

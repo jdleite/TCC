@@ -29,6 +29,9 @@ public class ItemVenda implements Serializable{
 	private int qtItem;
 	@Column(name="PRECO_ITEM",length=50,nullable=true)
 	private double precoItem;
+	@ManyToOne
+	@JoinColumn(name = "CD_VENDA")
+	private Venda venda;
 	
 	public ItemVenda (){
 		
@@ -58,6 +61,14 @@ public class ItemVenda implements Serializable{
 	public void setPrecoItem(double precoItem) {
 		this.precoItem = precoItem;
 	}
+	public Venda getVenda() {
+		return venda;
+	}
+	public void setVenda(Venda venda) {
+		this.venda = venda;
+	}
+	
+	
 	
 	
 	

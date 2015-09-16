@@ -8,9 +8,9 @@ import javax.persistence.TypedQuery;
 import br.com.mercado.dao.CategoriaDAO;
 import br.com.mercado.entity.Categoria;
 
-public class CategoriaDAOImpl extends DaoImpl<Categoria, Integer> implements CategoriaDAO{
+public class CategoriaDaoImpl extends DaoImpl<Categoria, Integer> implements CategoriaDAO{
 
-	public CategoriaDAOImpl(EntityManager em) {
+	public CategoriaDaoImpl(EntityManager em) {
 		super(em);
 	}
 	

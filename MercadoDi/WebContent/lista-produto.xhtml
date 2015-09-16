@@ -28,8 +28,11 @@
 						#{p.estoque}
 					</p:column>
 				<p:column headerText="Preço">
-						#{p.preco}
-					</p:column>
+					<h:outputText value="#{p.preco}">
+						<f:convertNumber currencySymbol="R$" pattern="#0.00" />
+
+					</h:outputText>
+				</p:column>
 				<p:column headerText="Tipo de Categoria">
 						#{p.categoria.tipo}
 					</p:column>

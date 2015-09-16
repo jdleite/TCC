@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import br.com.mercado.dao.ProdutoDAO;
-import br.com.mercado.daoImpl.ProdutoDAOImpl;
+import br.com.mercado.daoImpl.ProdutoDaoImpl;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.singleton.EMFactorySingleton;
@@ -18,7 +18,7 @@ public class AlterarProdutoBean {
 
 	@PostConstruct
 	public void init() {
-		dao = new ProdutoDAOImpl(EMFactorySingleton.getInstance()
+		dao = new ProdutoDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
 		produto = new Produto();
 	}

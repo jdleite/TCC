@@ -11,7 +11,7 @@ import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 
 import br.com.mercado.dao.ProdutoDAO;
-import br.com.mercado.daoImpl.ProdutoDAOImpl;
+import br.com.mercado.daoImpl.ProdutoDaoImpl;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.singleton.EMFactorySingleton;
 
@@ -27,10 +27,10 @@ public class RelatorioEstoqueBean {
 	@PostConstruct
 	public void init(){
 		EntityManager em = EMFactorySingleton.getInstance().createEntityManager();
-		dao = new ProdutoDAOImpl(em);
+		dao = new ProdutoDaoImpl(em);
 		 grafico = new BarChartModel();		
 	
-		 BarChartModel model = new BarChartModel();
+	
 		 
 	        ChartSeries produtos = new ChartSeries();
 		

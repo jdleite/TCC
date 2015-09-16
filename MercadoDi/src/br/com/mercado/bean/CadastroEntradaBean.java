@@ -6,10 +6,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.dao.EntradaDAO;
 import br.com.mercado.dao.ProdutoDAO;
-import br.com.mercado.daoImpl.EntradaDAOImpl;
-import br.com.mercado.daoImpl.ProdutoDAOImpl;
+import br.com.mercado.daoImpl.EntradaDaoImpl;
+import br.com.mercado.daoImpl.ProdutoDaoImpl;
 import br.com.mercado.entity.Entrada;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.exception.DBCommitException;
@@ -20,32 +20,35 @@ import br.com.mercado.singleton.EMFactorySingleton;
 public class CadastroEntradaBean {
 
 	private Entrada entrada;
-	private EntradaDao dao;
+	private EntradaDAO dao;
 	private int cdProduto;
 	private ProdutoDAO daoProd;
 	private Produto produto;
 	private int id;
 	private int quantidade;
 
+	static MensageView m = new MensageView();
+
 	@PostConstruct
 	public void init() {
-		dao = new EntradaDAOImpl(EMFactorySingleton.getInstance()
+		dao = new EntradaDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
-		daoProd = new ProdutoDAOImpl(EMFactorySingleton.getInstance()
+		daoProd = new ProdutoDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
 		entrada = new Entrada();
 		entrada.setDtCompra(Calendar.getInstance());
 		entrada.setDtValidade(Calendar.getInstance());
 		produto = new Produto();
-		
 
 	}
 
 	public void cadastrar() {
-		MensageView m = new MensageView();
+		if(cdProduto == 0){
+			m.error("Produto Inválido");
+		}else{
+		
 		try {
-
-		    daoProd.alterarPreco(cdProduto,entrada.getPrecoVenda());
+			daoProd.alterarPreco(cdProduto, entrada.getPrecoVenda());
 			produto = daoProd.findById(cdProduto);
 			entrada.setProduto(produto);
 			dao.insert(entrada);
@@ -56,8 +59,11 @@ public class CadastroEntradaBean {
 
 			m.error("Cadastrado com Sucesso!");
 		}
-
+		}
 	}
+
+	
+
 
 	public int getId() {
 		return id;

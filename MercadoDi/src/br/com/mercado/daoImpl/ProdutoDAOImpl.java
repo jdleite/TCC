@@ -8,9 +8,9 @@ import javax.persistence.TypedQuery;
 import br.com.mercado.dao.ProdutoDAO;
 import br.com.mercado.entity.Produto;
 
-public class ProdutoDAOImpl extends DaoImpl<Produto, Integer> implements ProdutoDAO{
+public class ProdutoDaoImpl extends DaoImpl<Produto, Integer> implements ProdutoDAO{
 
-	public ProdutoDAOImpl(EntityManager em) {
+	public ProdutoDaoImpl(EntityManager em) {
 		super(em);
 	}
 	

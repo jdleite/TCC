@@ -9,7 +9,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.mercado.dao.FornecedorDAO;
-import br.com.mercado.daoImpl.FornecedorDAOImpl;
+import br.com.mercado.daoImpl.FornecedorDaoImpl;
 import br.com.mercado.entity.Fornecedor;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.exception.IdNotFoundException;
@@ -24,7 +24,7 @@ public class ExcluirFornecedorBean {
 
 	@PostConstruct
 	private void init() {
-		dao = new FornecedorDAOImpl(EMFactorySingleton.getInstance()
+		dao = new FornecedorDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
 
 		lista = dao.listarFornecedor();

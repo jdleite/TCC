@@ -9,9 +9,9 @@ import javax.faces.context.FacesContext;
 import br.com.mercado.dao.CategoriaDAO;
 import br.com.mercado.dao.FornecedorDAO;
 import br.com.mercado.dao.ProdutoDAO;
-import br.com.mercado.daoImpl.CategoriaDAOImpl;
-import br.com.mercado.daoImpl.FornecedorDAOImpl;
-import br.com.mercado.daoImpl.ProdutoDAOImpl;
+import br.com.mercado.daoImpl.CategoriaDaoImpl;
+import br.com.mercado.daoImpl.FornecedorDaoImpl;
+import br.com.mercado.daoImpl.ProdutoDaoImpl;
 import br.com.mercado.entity.Categoria;
 import br.com.mercado.entity.Fornecedor;
 import br.com.mercado.entity.Produto;
@@ -34,11 +34,11 @@ public class CadastroProdutoBean {
 
 	@PostConstruct
 	private void init() {
-		dao = new ProdutoDAOImpl(EMFactorySingleton.getInstance()
+		dao = new ProdutoDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
-		daoCat = new CategoriaDAOImpl(EMFactorySingleton.getInstance()
+		daoCat = new CategoriaDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
-		daoFor = new FornecedorDAOImpl(EMFactorySingleton.getInstance()
+		daoFor = new FornecedorDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
 		categoria = new Categoria();
 		produto = new Produto();

@@ -8,10 +8,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.mercado.dao.EntradaDao;
+import br.com.mercado.dao.EntradaDAO;
 import br.com.mercado.dao.ProdutoDAO;
-import br.com.mercado.daoImpl.EntradaDAOImpl;
-import br.com.mercado.daoImpl.ProdutoDAOImpl;
+import br.com.mercado.daoImpl.EntradaDaoImpl;
+import br.com.mercado.daoImpl.ProdutoDaoImpl;
 import br.com.mercado.entity.Entrada;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.exception.DBCommitException;
@@ -26,13 +26,13 @@ public class ExcluirProdutoBean {
 	private List<Produto> lista;
 	private ProdutoDAO dao;
 	private Entrada entrada;
-	private EntradaDao eDao;
+	private EntradaDAO eDao;
 
 	@PostConstruct
 	public void init() {
-		dao = new ProdutoDAOImpl(EMFactorySingleton.getInstance()
+		dao = new ProdutoDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
-		eDao = new EntradaDAOImpl(EMFactorySingleton.getInstance()
+		eDao = new EntradaDaoImpl(EMFactorySingleton.getInstance()
 				.createEntityManager());
 		lista = dao.listarProduto();
 

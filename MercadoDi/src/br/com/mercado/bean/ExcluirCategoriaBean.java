@@ -9,7 +9,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.mercado.dao.CategoriaDAO;
-import br.com.mercado.daoImpl.CategoriaDAOImpl;
+import br.com.mercado.daoImpl.CategoriaDaoImpl;
 import br.com.mercado.entity.Categoria;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.exception.IdNotFoundException;
@@ -25,7 +25,7 @@ public class ExcluirCategoriaBean {
 	
 	@PostConstruct
 	private void init(){
-		dao = new CategoriaDAOImpl(EMFactorySingleton.getInstance().createEntityManager());
+		dao = new CategoriaDaoImpl(EMFactorySingleton.getInstance().createEntityManager());
 		lista = dao.listarCategoria();
 		categoria = new Categoria();
 	}
