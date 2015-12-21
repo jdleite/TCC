@@ -21,8 +21,7 @@ import br.com.mercado.singleton.EMFactorySingleton;
 
 public class Teste {
 	public static void main(String[] args) {
-		EntityManager em = EMFactorySingleton.getInstance()
-				.createEntityManager();
+		EntityManager em = EMFactorySingleton.getInstance().createEntityManager();
 		
 	
 
@@ -30,6 +29,8 @@ public class Teste {
 	    Produto prod = new Produto();
 	    ProdutoDAO pDao = new ProdutoDaoImpl(em);
 	    Categoria cat = new Categoria();
+	    Categoria cat2 = new Categoria();
+	    Categoria cat3 = new Categoria();
 	    CategoriaDAO cDao = new CategoriaDaoImpl(em);
 	    Fornecedor forn = new Fornecedor();
         FornecedorDAO fDao = new FornecedorDaoImpl(em);
@@ -43,37 +44,28 @@ public class Teste {
         
         cat.setUnidade("Lata");
         cat.setTipo("Bebida");
-        cat.setDescricao("Light");
-	   
+        cat.setDescricao("Refrigerante");
+        cat2.setUnidade("Lata");
+        cat2.setTipo("Bebida");
+        cat2.setDescricao("Cerveja");	
+        cat3.setUnidade("Lata");
+        cat3.setTipo("Bebida");
+        cat3.setDescricao("Suco");	
         forn.setBairro("Limoeiro");
         forn.setCep("123");
         forn.setEndereco("Miguel Fernandes");
         forn.setNome("SOMA");
-        forn.setNumero("88");
         forn.setTelefone("20593999");
         
-        prod.setFornecedor(forn);
-        prod.setCdBarra(1);
-        prod.setCategoria(cat);
-        prod.setEstoque(1000);
-        prod.setNmProduto("fanta");
-        prod.setDescricao("LAta");
-        prod.setPeso("350 ML");
-        prod.setPreco(1.20);
+      
         
-        ent.setProduto(prod);
-        ent.setQtCompra(100);
-        ent.setPrecoVenda(5.90);
-        
-        
-        
+   
         
         try {
-        	pDao.alterarPreco(1,ent.getPrecoVenda());
-			cDao.insert(cat);
 			fDao.insert(forn);
-			pDao.insert(prod);
-			eDao.insert(ent);
+			cDao.insert(cat);
+			cDao.insert(cat2);
+			cDao.insert(cat3);
 		} catch (DBCommitException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

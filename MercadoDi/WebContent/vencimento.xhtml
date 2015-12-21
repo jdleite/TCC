@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/_template.xhtml">
+	<ui:define name="content">
+		<p:messages autoUpdate="true" />
+		<p:growl autoUpdate="true" />
+		<h:form>			
+			<p:dataTable value="#{listaEntradaBean.vencimentos}" var="e"
+				emptyMessage="Entrada(s) não encontrada" styleClass="table"
+				id="tabela">
+				<p:column headerText="Codigo de Barra">
+						#{e.produto.cdBarra}
+					</p:column>
+					<p:column headerText="Marca">
+						#{e.produto.nmProduto}
+					</p:column>
+					<p:column headerText="Descrição">
+						#{e.produto.descricao}
+					</p:column>
+					<p:column headerText="Data do Vencimento">
+					<h:outputText value="#{e.dtValidade.time}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+					</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+
+

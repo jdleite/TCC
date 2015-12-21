@@ -19,7 +19,7 @@
 					actionListener="#{listaEntradaBean.buscar}" update="tabela" />
 			</h:panelGrid>
 			<p:dataTable value="#{listaEntradaBean.lista}" var="e"
-				emptyMessage="Entradas não encontrada" styleClass="table" id="tabela">
+				emptyMessage="Entrada(s) não encontrada" styleClass="table" id="tabela">
 				<f:facet name="header">
                         Lista Entrada
                       </f:facet>
@@ -44,7 +44,7 @@
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 				</p:column>
-				<p:column headerText="Compra">
+				<p:column headerText="Data da Entrada">
 					<h:outputText value="#{e.dtCompra.time}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>

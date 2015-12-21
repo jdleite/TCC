@@ -1,0 +1,7 @@
+br.com.mercado.bean
+br.com.mercado.dao
+br.com.mercado.daoImpl
+br.com.mercado.entity
+br.com.mercado.exception
+br.com.mercado.singleton
+br.com.mercado.view

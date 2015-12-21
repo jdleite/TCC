@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.EntityManager;
 
 import br.com.mercado.dao.CategoriaDAO;
 import br.com.mercado.daoImpl.CategoriaDaoImpl;
@@ -13,24 +14,30 @@ import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.exception.IdNotFoundException;
 import br.com.mercado.singleton.EMFactorySingleton;
 
+
 @ManagedBean
 @ViewScoped
 public class ListaCategoriaBean {
-	
+
 	
 	private List<Categoria> lista;
 
+	
 	private CategoriaDAO dao;
+
 	
 	private Categoria categoria;
 
+	
 	@PostConstruct
 	private void init() {
-		dao = new CategoriaDaoImpl(EMFactorySingleton.getInstance().createEntityManager());
+		EntityManager em = EMFactorySingleton.getInstance().createEntityManager();
+		dao = new CategoriaDaoImpl(em);
 		lista = dao.listarCategoria();
 	}
+
 	
-	public void excluir(){
+	public void excluir() {
 		MensageView m = new MensageView();
 		try {
 
@@ -44,27 +51,27 @@ public class ListaCategoriaBean {
 			e.printStackTrace();
 			m.error("Erro ao Excluir");
 		}
-		
-	}
-	
-	
 
+	}
+
+	
 	public List<Categoria> getLista() {
 		return lista;
 	}
 
+	
 	public void setLista(List<Categoria> lista) {
 		this.lista = lista;
 	}
 
+	
 	public Categoria getCategoria() {
 		return categoria;
 	}
 
+	
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
-	
 }
-

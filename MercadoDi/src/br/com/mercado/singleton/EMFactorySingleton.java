@@ -3,10 +3,8 @@ package br.com.mercado.singleton;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
 public class EMFactorySingleton {
-	
-	private static EntityManagerFactory factory;
+private static EntityManagerFactory factory;
 	
 	private EMFactorySingleton() { }
 	
@@ -19,9 +17,3 @@ public class EMFactorySingleton {
 		return factory;
 	}
 }
-
-
-
-
-
-

@@ -23,9 +23,7 @@ import br.com.mercado.singleton.EMFactorySingleton;
 public class TesteVenda {
 	public static void main(String[] args)  {
 		double preco = 0;
-		EntityManager em = EMFactorySingleton.getInstance()
-				.createEntityManager();
-
+		EntityManager em = EMFactorySingleton.getInstance().createEntityManager();
 		Venda v = new Venda();
 		VendaDAO vDao = new VendaDaoImpl(em);
 		Produto prod = new Produto();
@@ -35,14 +33,14 @@ public class TesteVenda {
 		List<ItemVenda> itens = new ArrayList<ItemVenda>();
 		ItemDAO iDao = new ItemDaoImpl(em);
 		
-		Produto prI = pDao.findById(1);
+		Produto prI = pDao.findById(2);
 
 		item.setPrecoItem(20);
 		item.setQtItem(1);
 		item.setProduto(prI);
 		item2.setPrecoItem(30);
 		item2.setProduto(prI);
-		item2.setQtItem(10);
+		item2.setQtItem(1);
 		itens.add(item);
 		itens.add(item2);
 
@@ -54,16 +52,10 @@ public class TesteVenda {
 		for(ItemVenda i: itens){
 		vDao.baixaEstoque(i.getProduto().getCdProduto(),i.getQtItem());
 		
+		System.out.println(i.getProduto().getNmProduto());
+		
 		}
-		
-		
-		
-		
-		
-		
-		
 		try {
-			
 			vDao.insert(v);
 		} catch (DBCommitException e) {
 			// TODO Auto-generated catch block

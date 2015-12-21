@@ -8,11 +8,14 @@ import javax.persistence.TypedQuery;
 import br.com.mercado.dao.ProdutoDAO;
 import br.com.mercado.entity.Produto;
 
+
 public class ProdutoDaoImpl extends DaoImpl<Produto, Integer> implements ProdutoDAO{
 
+	
 	public ProdutoDaoImpl(EntityManager em) {
 		super(em);
 	}
+	
 	
 	@Override
 	public List<Produto> listarProduto() {
@@ -21,6 +24,7 @@ public class ProdutoDaoImpl extends DaoImpl<Produto, Integer> implements Produto
 			return query.getResultList();
 	}
 
+	
 	@Override
 	public List<Produto> listarNome() {
 		TypedQuery<Produto> query = 
@@ -28,17 +32,19 @@ public class ProdutoDaoImpl extends DaoImpl<Produto, Integer> implements Produto
 			return query.getResultList();
 	}
 
+	
 	@Override
-	public void alterarPreco(int id, double preco) {
+	public void alterarPreco(int id, double preco,double lucro) {
 		em.getTransaction().begin();
 		em.createNativeQuery(
-				"UPDATE TB_DI_PRODUTO SET PRECO = "+ preco +" WHERE CD_PRODUTO = " + id)
+				"UPDATE TB_DI_PRODUTO SET LUCRO = "+lucro+",PRECO = "+ preco +" WHERE CD_PRODUTO = " + id)
 				.executeUpdate();
 
 		em.getTransaction().commit();	
 		
 	}
 
+	
 	@Override
 	public List<Produto> buscarNomeProduto(String nome) {
 		return em.createQuery("from Produto p where "
@@ -46,6 +52,7 @@ public class ProdutoDaoImpl extends DaoImpl<Produto, Integer> implements Produto
 				.setParameter("n","%"+nome+"%").getResultList();
 	}
 
+	
 	@Override
 	public List<String> autoCompletePorNome(String nome) {
 		return em.createQuery("select p.nmProduto from Produto p where "
@@ -53,8 +60,10 @@ public class ProdutoDaoImpl extends DaoImpl<Produto, Integer> implements Produto
 				.setParameter("n","%"+nome+"%").getResultList();
 	}
 
+	
+	
 	@Override
-	public boolean encotrarCodigoBarra(int cd) {
+	public boolean encotrarCodigoBarra(long cd) {
 		try {
 			em.createQuery("from Produto p where  p.cdBarra = :cd")
 			.setParameter("cd", cd).getSingleResult();
@@ -64,6 +73,18 @@ public class ProdutoDaoImpl extends DaoImpl<Produto, Integer> implements Produto
 		}
 		
 	}
+
+	
+	@Override
+	public List<Produto> estoqueBaixo() {
+		TypedQuery<Produto> query = 
+					 em.createQuery("from Produto where estoque <=10",Produto.class);
+		return query.getResultList();
+	}
+
+	
+
+	
 
 	
 			

@@ -15,69 +15,136 @@
 
 		<h:form id="tabela">
 
-					
+
 			<p:growl autoUpdate="true" />
 			<h:panelGrid columns="1" layout="grid">
 				<p:panel toggleable="false" toggleOrientation="vertical"
 					header="Produto">
 
 					<p:outputLabel value="Codigo de Barra: " for="barra" />
-					<p:inputText id="barra" value="#{vendaBean.cd}" tabindex="1" />
-					
-						<p:commandButton value="Buscar"  update="tabela" tabindex="2"
-							actionListener="#{vendaBean.buscar}" />
-					
+					<p:inputText id="barra" value="#{vendaBean.cd}" tabindex="1" required="true"
+						requiredMessage="Codigo de barra é Obrigatorio"/>
 
+					<p:commandButton value="Buscar" update="tabela" tabindex="2"
+						actionListener="#{vendaBean.buscar}" />
 
+				</p:panel>
+				<p:panel toggleable="false" toggleOrientation="vertical"
+					header="Descrição">
 
-
-					<p:outputLabel value="Produto:" for="produto" />
-					<p:inputText id="produto" readonly="true"
-						value="#{vendaBean.produto.nmProduto}">
+					<p:outputLabel value="Marca " for="nome" />
+					<p:inputText id="nome" value="#{vendaBean.produto.nmProduto}" 
 						
-						</p:inputText>
+						tabindex="1" readonly="true" />
 
 					<p:outputLabel value="Preço R$" for="preco" />
-					<p:inputText id="preco" readonly="true"
-						value="#{vendaBean.produto.preco}">
-						<f:convertNumber pattern="##,###,###,###.##"  minFractionDigits="2"/>
-						
-						</p:inputText>
+					<p:inputText id="preco" value="#{vendaBean.produto.preco}"
+						readonly="true" />
+
+					<p:outputLabel value="Descrição" for="descricao" />
+					<p:inputText id="descricao" value="#{vendaBean.produto.descricao}"
+						readonly="true" />
 				</p:panel>
 				<p:panel toggleable="false" toggleOrientation="vertical"
 					header="Quantidade">
 					<p:outputLabel value="Quantidade" for="quantidade" />
-					<p:inputText id="quantidade" value="#{vendaBean.qtd}"  tabindex="3"/>
+					<p:inputText id="quantidade" value="#{vendaBean.qtd}" tabindex="3" />
 
+					<h:inputHidden value="#{vendaBean.total}" />
 					<p:outputLabel value="Total R$" for="total" />
-					<p:inputText id="total" value="#{vendaBean.total}">
-					<f:convertNumber pattern="##,###,###,###.##"  minFractionDigits="2"/>
-					</p:inputText>
-					<p:commandButton value="Adicionar" update="tabela" tabindex="3"
+					<p:inputText id="total" value="#{vendaBean.total}" readonly="true" />
+
+					<p:commandButton value="Adicionar" update="tabela" tabindex="3" 
 						actionListener="#{vendaBean.somar}" />
-						
+
+
+					<p:commandButton value="Finalizar" onclick="PF('dlg1').show();"
+						tabindex="3" actionListener="#{vendaBean.vender}">
+					</p:commandButton>
+
+
+					<p:dialog header="Informações" widgetVar="dlg1" minHeight="40">
+						<h:form>
+							<h:panelGrid columns="1" layout="grid">
+								<p:panel toggleable="false" toggleOrientation="vertical"
+									header="Iformações da Venda">
+									<p:outputLabel value="Data da Venda:">
+										<p:outputLabel value="#{vendaBean.venda.dataVenda.time}">
+											<f:convertDateTime pattern="dd/MM/yyyy"
+												timeZone="America/Sao_Paulo" />
+										</p:outputLabel>
+									</p:outputLabel>
+									<br></br>
+									<p:outputLabel value="Código da Venda:">
+
+										<p:outputLabel value="#{vendaBean.codigo}" />
+									</p:outputLabel>
+									<br></br>
+									<p:outputLabel value="Total da Venda R$:">
+
+										<p:outputLabel value="#{vendaBean.total}" />
+									</p:outputLabel>
+
+
+								</p:panel>
+							</h:panelGrid>
+							<p:panel toggleable="false" toggleOrientation="vertical"
+								header="Produto">
+								<p:dataTable value="#{vendaBean.listagem}" id="tabela" var="l"
+									emptyMessage="Produtos não encontrado">
+									<f:facet name="header">
+                        Lista de Itens
+                      </f:facet>
+									<p:column headerText="Nome do Produto">
+										<h:outputText value="#{l.nome}" />
+									</p:column>
+									<p:column headerText="Quantidade">
+										<h:outputText value="#{l.quantidade}" />
+									</p:column>
+
+
+									<p:column headerText="Total">
+										<h:outputText value="#{l.total}" />
+									</p:column>
+
+
+								</p:dataTable>
+
+
+
+							</p:panel>
+
+						</h:form>
+
+					</p:dialog>
+
 
 
 				</p:panel>
 
 				<p:panel toggleable="false" toggleOrientation="vertical"
 					header="Produto">
-					<p:dataTable value="#{vendaBean.lista}" id="tabela" var="p"
+					<p:dataTable value="#{vendaBean.listagem}" id="tabela" var="l"
 						emptyMessage="Produtos não encontrado">
 						<f:facet name="header">
-                        Lista Produto
+                        Lista de Itens
                       </f:facet>
 						<p:column headerText="Nome do Produto">
-							<h:outputText value="#{p.nmProduto}" />
+							<h:outputText value="#{l.nome}" />
 						</p:column>
 						<p:column headerText="Quantidade">
-							<h:outputText value="#{p.descricao}" />
-						</p:column>
-						<p:column headerText="Total do Item">
-							<h:outputText value="#{p.descricao}" />
+							<h:outputText value="#{l.quantidade}" />
 						</p:column>
 
+
+						<p:column headerText="Total">
+							<h:outputText value="#{l.total}" />
+						</p:column>
+
+
 					</p:dataTable>
+
+
 
 				</p:panel>
 

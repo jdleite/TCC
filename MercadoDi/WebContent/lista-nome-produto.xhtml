@@ -13,9 +13,12 @@
 	    <p:growl autoUpdate="true"/>
 		<h:form>
 			<p:dataTable value="#{listaProdutoBean.lista}" var="p"
-				emptyMessage="Produtos não encontrado">
+				emptyMessage="Produto(s) não encontrado">
                <p:column headerText="Nome do Produto">
 					<h:outputText value="#{p.nmProduto}" />
+				</p:column>
+				<p:column headerText="Codigo de Barra">
+					<h:outputText value="#{p.cdBarra}" />
 				</p:column>
 			<p:column headerText="Unidade">
 					<h:outputText value="#{p.categoria.unidade}" />

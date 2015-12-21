@@ -3,6 +3,7 @@ package br.com.mercado.bean;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.EntityManager;
 
 import br.com.mercado.dao.CategoriaDAO;
 import br.com.mercado.daoImpl.CategoriaDaoImpl;
@@ -10,24 +11,29 @@ import br.com.mercado.entity.Categoria;
 import br.com.mercado.exception.DBCommitException;
 import br.com.mercado.singleton.EMFactorySingleton;
 
+
 @ManagedBean
 @RequestScoped
 public class AlterarCategoriaBean {
 
+	
 	private CategoriaDAO dao;
 
+	
 	private Categoria categoria;
 
+	
 	@PostConstruct
 	private void init() {
+		EntityManager em = EMFactorySingleton.getInstance().createEntityManager();
 		categoria = new Categoria();
-		dao = new CategoriaDaoImpl(EMFactorySingleton.getInstance()
-				.createEntityManager());
+		dao = new CategoriaDaoImpl(em);
 
 		
 
 	}
 
+	
 	public void alterar() {
 		MensageView m = new MensageView();
 
@@ -41,10 +47,12 @@ public class AlterarCategoriaBean {
 
 	}
 
+	
 	public Categoria getCategoria() {
 		return categoria;
 	}
 
+	
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}

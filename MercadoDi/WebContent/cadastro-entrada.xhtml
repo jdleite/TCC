@@ -7,7 +7,10 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
+
 <ui:composition template="WEB-INF/_template.xhtml">
+	<script language="javaScript" type="text/javascript"
+		src="../resources/java/formatar.js"></script>
 	<ui:define name="title">
 	    Cadastrar Entrada de Produto
 	</ui:define>
@@ -15,25 +18,30 @@
 		<p:panel toggleable="true" toggleOrientation="vertical"
 			header="Entrada de Produto">
 			<h:form>
+
+				<h:inputHidden value="#{cadastroEntradaBean.cdProduto}" />
 				<p:messages autoUpdate="true" />
 				<p:growl autoUpdate="true" />
 				<h:panelGrid columns="3">
 					<p:outputLabel value="Produto" for="codigo" />
-					<p:inputMask id="codigo" mask="9?9999999" placeHolder=""
+					<p:inputText id="codigo" readonly="true"
 						value="#{cadastroEntradaBean.cdProduto}" />
+
 
 					<p:commandButton icon="ui-icon-search" action="lista-nome-produto" />
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<p:outputLabel value="Preço da compra R$" for="preco" />
-					<p:inputText id="preco" 
+					<p:inputText id="preco" required="true"
+						requiredMessage="Preço  é Obrigatorio"
 						value="#{cadastroEntradaBean.entrada.precoCompra}">
 
 						<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
 					</p:inputText>
 
 					<p:outputLabel value="Preço da venda R$" for="venda" />
-					<p:inputText id="venda"
+					<p:inputText id="venda" required="true"
+						requiredMessage="Preço  é Obrigatorio"
 						value="#{cadastroEntradaBean.entrada.precoVenda}">
 
 						<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
@@ -41,12 +49,14 @@
 					</p:inputText>
 
 					<p:outputLabel value="Quantidade" for="quantidade" />
-					<p:inputText id="quantidade"
+					<p:inputText id="quantidade" required="true"
+						requiredMessage="Quantidade  é Obrigatorio"
 						value="#{cadastroEntradaBean.entrada.qtCompra}" />
 
 
 					<p:outputLabel value="Data Validade do Produto" for="validade" />
-					<p:inputText id="validade"
+					<p:inputText id="validade" required="true"
+						requiredMessage="Data  é Obrigatorio"
 						value="#{cadastroEntradaBean.entrada.dtValidade.time}">
 						<f:convertDateTime pattern="dd/MM/yyyy"
 							timeZone="America/Sao_Paulo" />
@@ -55,7 +65,8 @@
 
 
 
-					<h:inputHidden id="dataCompra"
+					<h:inputHidden id="dataCompra" required="true"
+						requiredMessage="Data  é Obrigatorio"
 						value="#{cadastroEntradaBean.entrada.dtCompra.time}">
 						<f:convertDateTime pattern="dd/MM/yyyy"
 							timeZone="America/Sao_Paulo" />

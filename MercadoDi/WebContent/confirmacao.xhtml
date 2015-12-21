@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/_template.xhtml">
+	<ui:define name="title">
+	   Informações da Venda
+	</ui:define>
+	<ui:define name="content">
+
+		<h:form id="tabela">
+			<h:panelGrid columns="1" layout="grid">
+				<p:panel toggleable="false" toggleOrientation="vertical"
+					header="Iformações da Venda">
+					<p:outputLabel value="Data da Venda:">
+						<p:outputLabel value="#{vendaBean.venda.dataVenda.time}">
+							<f:convertDateTime pattern="dd/MM/yyyy"
+								timeZone="America/Sao_Paulo" />
+						</p:outputLabel>
+					</p:outputLabel>
+					<br></br>
+					<p:outputLabel value="Total da Venda:">
+						
+						<p:outputLabel value="#{confirmacaoBean.venda.total}"/>
+					</p:outputLabel>
+					
+
+				</p:panel>
+			</h:panelGrid>
+
+			<p:panel toggleable="false" toggleOrientation="vertical"
+				header="Iten(s) Vendido">
+
+				<p:dataTable value="#{vendaBean.listagem}" id="tabela" var="l"
+					emptyMessage="Produtos não encontrado">
+
+					<p:column headerText="Nome do Produto">
+						<h:outputText value="#{l.nome}" />
+					</p:column>
+					<p:column headerText="Quantidade">
+						<h:outputText value="#{l.quantidade}" />
+					</p:column>
+
+
+				
+
+
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
+
+
+

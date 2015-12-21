@@ -8,12 +8,12 @@
 
 
 
-
 <h:head>
 	<title><ui:insert name="title">Mercado DI</ui:insert></title>
 </h:head>
 
 <h:body>
+ 
 	<p:column rowpan="3">
 		<p:graphicImage url="../resources/img/logo.png" width="100px" 
 			height="100px" />
@@ -30,11 +30,14 @@
 			<p:menuitem value="Produto" outcome="lista-produto" />
 			<p:menuitem value="Entrada" outcome="lista-entrada" />
 			<p:menuitem value="Fornecedor" outcome="lista-fornecedor" />
-			<p:menuitem value="Categoria" outcome="lista-categoria" />
+			<p:menuitem value="Categoria" outcome="lista-categoria" />			
+			<p:menuitem value="Itens da Venda" outcome="lista-item" />
 
 		</p:submenu>
 		<p:submenu label="Relatorios">
-			<p:menuitem value="Estoque" outcome="relatorio-estoque" />
+			<p:menuitem value="Relatorios" outcome="relatorio" />			
+			<p:menuitem value="Estoque Baixo" outcome="quantidade-baixa" />			
+			<p:menuitem value="Produtos em Vencimento" outcome="vencimento" />
 		</p:submenu>
 	</p:menubar>
 	

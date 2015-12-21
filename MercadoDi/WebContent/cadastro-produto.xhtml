@@ -16,36 +16,34 @@
 			header="Cadastro de Produtos">
 			<h:form id="tabela" enctype="multipart/form-data">
 				<p:growl autoUpdate="true" />
-				<h:panelGrid columns="1">
-					<p:panel toggleable="true" toggleOrientation="vertical"
-						header="Selecionar">
-						<p:outputLabel value="Categoria" for="categoria" />
-						<p:inputMask id="categoria" mask="9?999999999999999"
-							placeHolder="" value="#{cadastroProdutoBean.cdCategoria}" />
-						<p:commandButton icon="ui-icon-search"
-							action="lista-nome-categoria" />
 
-						<p:outputLabel value="Fornecedor" for="fornecedor" />
-						<p:inputText id="fornecedor"
-							value="#{cadastroProdutoBean.cdFornecedor}">
+				<h:inputHidden value="#{cadastroProdutoBean.cdCategoria}" />
+				<h:inputHidden value="#{cadastroProdutoBean.cdFornecedor}" />
+				<p:outputLabel value="Categoria" for="categoria" />
+				<p:inputText readonly="true" id="categoria" placeHolder=""
+					value="#{cadastroProdutoBean.cdCategoria}" />
+				<p:commandButton icon="ui-icon-search" action="lista-nome-categoria" />
 
-						</p:inputText>
+				<p:outputLabel value="Fornecedor" for="fornecedor" />
+				<p:inputText id="fornecedor" 
+					value="#{cadastroProdutoBean.cdFornecedor}">
 
-						<p:commandButton icon="ui-icon-search"
-							action="lista-nome-fornecedor">
-						</p:commandButton>
-					</p:panel>
-				</h:panelGrid>
+				</p:inputText>
+
+				<p:commandButton icon="ui-icon-search"
+					onclick="PF('dlg1').show();">
+				</p:commandButton>
+
 				<h:panelGrid columns="4">
 					<p:outputLabel value="Codigo de Barra" for="barra" />
-					<p:inputText id="barra" 
+					<p:inputText id="barra"
 						value="#{cadastroProdutoBean.produto.cdBarra}" />
+
+					
 					
 
 
-
-
-					<p:outputLabel value="Nome do Produto" for="nome" />
+					<p:outputLabel value="Marca" for="nome" />
 					<p:inputText id="nome"
 						value="#{cadastroProdutoBean.produto.nmProduto}" />
 
@@ -62,6 +60,28 @@
 					actionListener="#{cadastroProdutoBean.cadastrar}" />
 				<p:commandButton type="reset" value="Limpar" />
 				<p:commandButton value="Sair" title="Alterar" action="index" />
+				
+				<p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+						<h:form>
+							<p:dataTable value="#{listaFornecedorBean.lista}" var="f"
+								styleClass="table">
+
+
+								<p:column headerText="Nome">
+									<h:outputText value="#{f.nome}" />
+								</p:column>
+
+
+								<p:column>
+									<p:commandButton icon="ui-icon-check" value="#{c.cdFornecedor}"
+										ajax="false">
+										<f:setPropertyActionListener value="#{f.cdFornecedor}"
+											target="#{cadastroProdutoBean.cdFornecedor}" />
+									</p:commandButton>
+								</p:column>
+							</p:dataTable>
+						</h:form>
+					</p:dialog>
 
 
 			</h:form>

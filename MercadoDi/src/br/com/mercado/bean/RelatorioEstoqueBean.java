@@ -15,50 +15,40 @@ import br.com.mercado.daoImpl.ProdutoDaoImpl;
 import br.com.mercado.entity.Produto;
 import br.com.mercado.singleton.EMFactorySingleton;
 
+// TODO: Auto-generated Javadoc
+
 @ManagedBean
 @ViewScoped
 public class RelatorioEstoqueBean {
+
 	
 	private BarChartModel grafico;
+
 	
 	private ProdutoDAO dao;
-	
+
 	
 	@PostConstruct
-	public void init(){
+	public void init() {
+
 		EntityManager em = EMFactorySingleton.getInstance().createEntityManager();
 		dao = new ProdutoDaoImpl(em);
-		 grafico = new BarChartModel();		
-	
-	
-		 
-	        ChartSeries produtos = new ChartSeries();
-		
-	    
-		
-		 List<Produto> lista = dao.listarProduto();
-	        for (Produto i : lista){			
-	        	produtos.set(i.getNmProduto(), i.getEstoque());
-			}
-	      
-		
-        
-        grafico.addSeries(produtos);
-        
-		
+		grafico = new BarChartModel();
+
+		ChartSeries produtos = new ChartSeries();
+
+		List<Produto> lista = dao.listarProduto();
+		for (Produto i : lista) {
+			produtos.set(i.getNmProduto(), i.getEstoque());
+		}
+
+		grafico.addSeries(produtos);
+
 	}
 
-
+	
 	public BarChartModel getGrafico() {
 		return grafico;
 	}
-
-
-
-	
-
-
-	
-		
 
 }

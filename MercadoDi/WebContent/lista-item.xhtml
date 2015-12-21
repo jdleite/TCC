@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/_template.xhtml">
+	<ui:define name="content">
+		<p:growl autoUpdate="true" />
+		<h:form>
+		<p:panelGrid columns="3">
+			<p:outputLabel value="Código da Venda" for="venda"/>
+			<p:inputText id="venda"  value="#{listaItemBean.id}"/>
+			<p:commandButton value="Buscar" actionListener="#{listaItemBean.buscar}" update="tabela"/>
+			</p:panelGrid>
+			<p:dataTable value="#{listaItemBean.lista}" id="tabela" var="i"
+				emptyMessage="Produto(s) não encontrado">
+				
+				<p:column headerText="Código do Produto">
+						#{i.produto.cdProduto}
+					</p:column>
+             
+				<p:column headerText="Nome do Produto">
+						#{i.produto.nmProduto}
+					</p:column>
+					
+					<p:column headerText="Quantidade">
+						#{i.qtItem}
+					</p:column>
+					
+					<p:column headerText="Valor">
+						#{i.precoItem}
+					</p:column>
+					<p:column headerText="Data da Venda">
+					<h:outputText value="#{i.venda.dataVenda.time}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+					
+					<p:column headerText="Código da Venda">
+						#{i.venda.cdVenda}
+					</p:column>
+				
+			
+				
+					
+					
+			
+
+			</p:dataTable>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
+
+

@@ -14,24 +14,32 @@ import br.com.mercado.singleton.EMFactorySingleton;
 @RequestScoped
 public class CadastroCategoriaBean {
 
+	
 	private CategoriaDaoImpl dao;
+
 	
 	private Categoria categoria;
-	
 
 	
 	@PostConstruct
-	private void init(){
-		EntityManager em = EMFactorySingleton
-				.getInstance().createEntityManager();
+	private void init() {
+
+		EntityManager em = EMFactorySingleton.getInstance().createEntityManager();
 		dao = new CategoriaDaoImpl(em);
 		categoria = new Categoria();
 	}
-	
-	
-	
-	public void cadastrar(){
+
+
+	public void cadastrar() {
+
 		MensageView m = new MensageView();
+		if(categoria.getTipo().equalsIgnoreCase("selecione")|| categoria.getUnidade().equalsIgnoreCase("selecione")){
+
+			m.error("Selecione não é um tipo ou unidade Válido");
+		}else{
+			
+		
+		
 		try {
 			dao.insert(getCategoria());
 			m.info("Cadastrado com Sucesso!");
@@ -39,34 +47,17 @@ public class CadastroCategoriaBean {
 			e.printStackTrace();
 			m.error("Erro ao Cadastrar");
 		}
+		}
 	}
-	
-	
 
-
+	
 	public Categoria getCategoria() {
 		return categoria;
 	}
 
-
+	
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
-
-
-	
-
-
-
 }
-
-
-
-
-
-
-
-
-
-

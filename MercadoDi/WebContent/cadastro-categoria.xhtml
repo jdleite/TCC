@@ -6,12 +6,21 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+	
+
+
 
 <ui:composition template="WEB-INF/_template.xhtml">
 	<ui:define name="title">
 	    Cadastro de Categoria
 	</ui:define>
+	
 	<ui:define name="content">
+	
+	<!--  
+	<h:outputScript name="./js/vali.js"  target="body"/>-->
+
+    
 		<p:panel toggleable="true" toggleOrientation="vertical"
 			header="Cadastro de Categoria">
 			<h:form id="tabela" enctype="multipart/form-data">
@@ -24,7 +33,8 @@
 					<p:selectOneMenu value="#{cadastroCategoriaBean.categoria.tipo}"
 						id="tipo">
 						<f:selectItem itemLabel="Selecione" itemValue="Selecione" />
-						<f:selectItem itemLabel="Bebida" itemValue="Bebida" />
+						<f:selectItem itemLabel="Bebida" itemValue="Bebida" />						
+						<f:selectItem itemLabel="Limpeza" itemValue="Limpeza" />
 						<f:selectItem itemLabel="Laticínio" itemValue="Laticínio" />
 						<f:selectItem itemLabel="Perecível" itemValue="Perecível" />
 						<f:selectItem itemLabel="Não Perecível" itemValue="Não Perecível" />
@@ -52,14 +62,14 @@
 
 
 					<p:outputLabel value="Descrição" for="descricao" />
-					<p:inputTextarea id="descricao" required="true"
+					<p:inputTextarea id="descricao" required="true" onkeyup= "ten();"
 						requiredMessage="Descrição é Obrigatorio"
 						value="#{cadastroCategoriaBean.categoria.descricao}" />
 
 
 
 				</h:panelGrid>
-				<p:commandButton value="Salvar"
+				<p:commandButton value="Salvar" 
 					actionListener="#{cadastroCategoriaBean.cadastrar}" update="tabela" />
 
 				<p:commandButton type="reset" value="Limpar" />
